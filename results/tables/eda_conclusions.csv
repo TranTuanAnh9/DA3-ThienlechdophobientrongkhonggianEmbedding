@@ -1,0 +1,11 @@
+question,result,evidence
+Ba file có liên kết đầy đủ cho item đã tương tác?,True,"missing category=0, missing product=0"
+Cần sắp xếp lại chuỗi theo timeframe?,True,"180,643 session không tăng timeframe trong thứ tự raw"
+Session length 1 có đáng kể?,True,29.23% session
+Click lặp có đáng kể?,True,13.62% event là lượt lặp trong session
+Dữ liệu có long tail rõ?,True,63.80% item xuất hiện dưới 5 lần; Gini=0.726
+Category phản ánh cấu trúc session?,True,same-category non-self=87.45% so với baseline=1.08%
+Item age có thể gây nhiễu popularity?,True,Spearman frequency-age=0.504
+Session nhiều ngày đều dưới 30 phút?,True,260 session qua hai ngày liên tiếp; duration max theo timeframe=1196.75s
+Ngưỡng item support có trade-off lớn?,True,item giữ lại: threshold 1=98.76%; threshold 10=19.45%
+Fixed-point filtering có làm đổi catalog?,True,"one-pass=43,136 item; fixed-point=42,171 item"

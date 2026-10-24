@@ -1,0 +1,11 @@
+check,value
+sessions_total,310324
+sessions_spanning_multiple_dates,260
+multi_day_all_exactly_two_consecutive_dates,True
+multi_day_with_date_reversal_after_timeframe_sort,0
+duplicate_session_timeframe_extra_rows,4
+duplicate_session_timeframe_groups,4
+duration_p99_seconds,1152.72408
+duration_p999_seconds,1182.0150620000002
+duration_max_seconds,1196.753
+sessions_duration_ge_30_minutes,0

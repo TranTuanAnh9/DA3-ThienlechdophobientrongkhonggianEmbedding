@@ -1,0 +1,10 @@
+metric,value
+pre_holdout_filtered_train_items,38237.0
+controlled_cold_items,7647.0
+controlled_cold_ratio_pct,19.99895389282632
+controlled_cold_with_future_events,4630.0
+natural_temporal_cold_items,6700.0
+final_warm_items,29936.0
+post_holdout_attrition_items,654.0
+cold_categories,629.0
+cold_categories_with_warm_peer,629.0

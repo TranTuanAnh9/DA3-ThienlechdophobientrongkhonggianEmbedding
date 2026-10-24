@@ -1,0 +1,8 @@
+metric,value
+number_of_categories,1217.0
+singleton_categories,95.0
+single_category_sessions,251222.0
+single_category_sessions_pct,80.95474407393563
+same_category_transition_rate_pct,88.43410561090356
+same_category_non_self_rate_pct,87.45401862824538
+independent_random_baseline_pct,1.0752130033367606

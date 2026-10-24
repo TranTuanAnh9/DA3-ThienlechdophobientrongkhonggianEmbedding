@@ -1,0 +1,6 @@
+
+pytest/cache/
+pytest/jupyter_runtime/
+pytest/ipython/
+pytest/tmp/
+

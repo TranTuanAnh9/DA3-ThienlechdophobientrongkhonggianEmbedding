@@ -1,0 +1,4 @@
+logical_name,file_name,size_bytes,rows,sha256
+views,train-item-views.csv,43899457,1235380,5a27dbd1a7d47867ef64aff378dbed971131f0f6fcd86fee8bc1c8cbed6f413f
+categories,product-categories.csv,2163623,184047,e5b7d2cda115f0ec3f5d5d571d247147a23a5ec1bf62492a2feb6a90b68fafa2
+products,products.csv,7520465,184047,cfe9d17ebd07dba16879a04fc556f223f758001f99a2e3bccb71d8edfffa6cac

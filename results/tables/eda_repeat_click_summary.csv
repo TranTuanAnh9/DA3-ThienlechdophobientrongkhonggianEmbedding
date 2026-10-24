@@ -1,0 +1,7 @@
+metric,value
+sessions_with_repeated_items,86439.0
+sessions_with_repeated_items_pct,27.85443600881659
+all_repeat_events,168313.0
+all_repeat_events_pct,13.624390875681977
+consecutive_repeat_events,72265.0
+non_consecutive_repeat_events,96048.0

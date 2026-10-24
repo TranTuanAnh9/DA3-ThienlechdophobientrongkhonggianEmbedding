@@ -1,0 +1,10 @@
+check,value
+date_min,2016-01-01 00:00:00
+date_max,2016-06-01 00:00:00
+number_of_dates,152
+timeframe_min_ms,12
+timeframe_max_ms,1199992
+sessions_out_of_raw_order,180643
+sessions_out_of_raw_order_pct,58.21109550018691
+sessions_spanning_multiple_dates,260
+duplicate_session_timeframe_extra_rows,4

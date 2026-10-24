@@ -1,0 +1,50 @@
+
+dataset: diginetica
+
+raw_dir: data/raw/diginetica
+interim_dir: data/interim/diginetica
+processed_dir: data/processed/diginetica
+recbole_dir: data/processed/recbole/diginetica
+
+ordering:
+  within_session: [timeframe, row_order]
+  split_session_by: last_event_date
+  keep_repeated_clicks: true
+  keep_midnight_crossing_sessions: true
+
+filtering:
+  min_session_length: 2
+  min_item_frequency: 5
+  fixed_point: true
+
+temporal_split:
+  strategy: last_n_calendar_days
+  validation_days: 7
+  test_days: 7
+
+cold_start:
+  protocol: controlled_item_holdout_option_b_assumption
+  ratio: 0.20
+  unit: item
+  stratify_by: category
+  seed: 2024
+  denominator: pre_holdout_filtered_train_catalog
+  keep_in_item_mapping: true
+  usage: visualization_only
+  exclude_from_main_warm_evaluation: true
+  require_one_warm_item_per_category: true
+  min_pre_holdout_items_per_category: 5
+  assumption_note: >-
+    Mục 1.6/Option B không có trong tài liệu được cung cấp. Giao thức này là
+    giả định minh bạch dựa trên mô tả cold-start 20% và embedding cold chưa
+    huấn luyện; nếu nhận được quy định gốc thì quy định gốc sẽ thay thế.
+
+popularity_groups:
+  source: final_train_frequency_only
+  method: tie_aware_item_frequency_quantiles
+  rare_quantile: 0.20
+  popular_quantile: 0.80
+
+exports:
+  parquet_compression: zstd
+  padding_internal_item_id: 0

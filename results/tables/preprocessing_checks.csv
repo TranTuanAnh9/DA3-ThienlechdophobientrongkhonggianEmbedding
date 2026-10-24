@@ -1,0 +1,24 @@
+check,passed,evidence
+raw_hashes_match_eda,True,Ba SHA-256 khớp manifest EDA
+train_order_nondecreasing,True,timeframe không giảm
+validation_order_nondecreasing,True,timeframe không giảm
+test_order_nondecreasing,True,timeframe không giảm
+train_min_session_length,True,mọi session >=2
+validation_min_session_length,True,mọi session >=2
+test_min_session_length,True,mọi session >=2
+train_validation_sessions_disjoint,True,không trùng session
+train_test_sessions_disjoint,True,không trùng session
+validation_test_sessions_disjoint,True,không trùng session
+controlled_cold_count_exact,True,"expected=7,647"
+controlled_cold_absent_from_train,True,cold ∩ train = ∅
+controlled_cold_has_warm_category_peer,True,mọi cold category còn warm item
+main_validation_warm_only,True,validation item ⊆ warm
+main_test_warm_only,True,test item ⊆ warm
+mapping_internal_ids_unique,True,internal id duy nhất
+mapping_raw_ids_unique,True,raw id duy nhất
+mapping_starts_at_one,True,0 dành cho padding
+mapping_categories_complete,True,không thiếu category
+train_frequency_minimum,True,min >= 5
+popularity_from_train_only,True,tổng frequency bằng train events
+train_before_validation,True,temporal boundary đúng
+validation_before_test,True,temporal boundary đúng

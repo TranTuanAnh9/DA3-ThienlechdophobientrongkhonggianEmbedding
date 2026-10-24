@@ -1,0 +1,5 @@
+popularity_group,items,train_interactions,min_train_frequency,median_train_frequency,max_train_frequency,item_share_pct
+cold,7647,0,0,0.0,0,20.346965383284996
+medium,16940,218091,7,11.0,26,45.07357049729931
+popular,6112,394016,27,45.0,860,16.262671952744594
+rare,6884,37525,5,5.0,6,18.3167921666711

@@ -1,0 +1,15 @@
+check,value
+views_schema_exact,True
+categories_schema_exact,True
+products_schema_exact,True
+views_exact_duplicate_rows,0
+categories_exact_duplicate_rows,0
+products_exact_duplicate_rows,0
+duplicate_view_event_keys,0
+duplicate_category_item_ids,0
+duplicate_product_item_ids,0
+eventdate_parse_failures,0
+negative_timeframe_rows,0
+view_items_without_category,0
+view_items_without_product,0
+metadata_items_never_viewed,61054

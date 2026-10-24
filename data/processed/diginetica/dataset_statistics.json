@@ -1,0 +1,60 @@
+{
+  "dataset": "diginetica",
+  "data_end_date": "2016-06-01",
+  "validation_start_date": "2016-05-19",
+  "test_start_date": "2016-05-26",
+  "min_session_length": 2,
+  "min_item_frequency": 5,
+  "controlled_cold_ratio_requested": 0.2,
+  "controlled_cold_ratio_actual": 0.1999895389282632,
+  "controlled_cold_seed": 2024,
+  "rare_frequency_max": 6,
+  "popular_frequency_min": 27,
+  "final_splits": [
+    {
+      "stage": "train",
+      "events": 649632,
+      "sessions": 150783,
+      "items": 29936,
+      "categories": 945,
+      "prefix_target_examples": 498849
+    },
+    {
+      "stage": "validation_warm",
+      "events": 39450,
+      "sessions": 9622,
+      "items": 12227,
+      "categories": 704,
+      "prefix_target_examples": 29828
+    },
+    {
+      "stage": "test_warm",
+      "events": 52792,
+      "sessions": 12791,
+      "items": 13847,
+      "categories": 738,
+      "prefix_target_examples": 40001
+    }
+  ],
+  "examples": [
+    {
+      "split": "train",
+      "sessions": 150783,
+      "all_prefix_examples": 498849,
+      "last_item_examples": 150783
+    },
+    {
+      "split": "validation",
+      "sessions": 9622,
+      "all_prefix_examples": 29828,
+      "last_item_examples": 9622
+    },
+    {
+      "split": "test",
+      "sessions": 12791,
+      "all_prefix_examples": 40001,
+      "last_item_examples": 12791
+    }
+  ],
+  "audit_passed": true
+}
