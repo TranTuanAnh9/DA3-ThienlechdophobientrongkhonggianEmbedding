@@ -5,3 +5,36 @@
 2026-10-25 12:22:24 | INFO | ========================================================================
 2026-10-25 12:22:24 | INFO | Tổng số item trong bảng Embedding: 37,583 (+1 hàng padding 0) | Warm trainable: 29,936 | Controlled cold (đóng băng): 7,647
 2026-10-25 12:22:24 | INFO | Tổng số tham số mô hình: 2,528,384
+2026-10-25 12:27:48 | INFO | Epoch 01/30 | Loss: 8.9837 | Val Recall@20: 0.2268 | Val MRR@20: 0.0635 | Val NDCG@20: 0.0990 | Time: 323.2s [BEST]
+2026-10-25 12:33:16 | INFO | Epoch 02/30 | Loss: 6.6840 | Val Recall@20: 0.4302 | Val MRR@20: 0.1301 | Val NDCG@20: 0.1956 | Time: 328.4s [BEST]
+2026-10-25 12:38:39 | INFO | Epoch 03/30 | Loss: 5.8030 | Val Recall@20: 0.4926 | Val MRR@20: 0.1530 | Val NDCG@20: 0.2275 | Time: 322.7s [BEST]
+2026-10-25 12:44:05 | INFO | Epoch 04/30 | Loss: 5.4463 | Val Recall@20: 0.5245 | Val MRR@20: 0.1680 | Val NDCG@20: 0.2463 | Time: 326.2s [BEST]
+2026-10-25 12:49:13 | INFO | Epoch 05/30 | Loss: 5.2431 | Val Recall@20: 0.5429 | Val MRR@20: 0.1807 | Val NDCG@20: 0.2605 | Time: 307.7s [BEST]
+2026-10-25 12:54:14 | INFO | Epoch 06/30 | Loss: 5.1060 | Val Recall@20: 0.5482 | Val MRR@20: 0.1860 | Val NDCG@20: 0.2659 | Time: 300.9s [BEST]
+2026-10-25 12:59:16 | INFO | Epoch 07/30 | Loss: 5.0004 | Val Recall@20: 0.5588 | Val MRR@20: 0.1905 | Val NDCG@20: 0.2718 | Time: 302.0s [BEST]
+2026-10-25 13:03:58 | INFO | Epoch 08/30 | Loss: 4.9114 | Val Recall@20: 0.5606 | Val MRR@20: 0.1961 | Val NDCG@20: 0.2767 | Time: 282.5s [BEST]
+2026-10-25 13:08:56 | INFO | Epoch 09/30 | Loss: 4.8420 | Val Recall@20: 0.5650 | Val MRR@20: 0.1978 | Val NDCG@20: 0.2789 | Time: 297.8s [BEST]
+2026-10-25 13:14:01 | INFO | Epoch 10/30 | Loss: 4.7797 | Val Recall@20: 0.5682 | Val MRR@20: 0.2013 | Val NDCG@20: 0.2824 | Time: 304.7s [BEST]
+2026-10-25 13:19:02 | INFO | Epoch 11/30 | Loss: 4.7277 | Val Recall@20: 0.5686 | Val MRR@20: 0.2023 | Val NDCG@20: 0.2833 | Time: 301.5s [BEST]
+2026-10-25 13:24:05 | INFO | Epoch 12/30 | Loss: 4.6802 | Val Recall@20: 0.5704 | Val MRR@20: 0.2011 | Val NDCG@20: 0.2827 | Time: 302.4s 
+2026-10-25 13:29:23 | INFO | Epoch 13/30 | Loss: 4.6355 | Val Recall@20: 0.5708 | Val MRR@20: 0.2016 | Val NDCG@20: 0.2831 | Time: 318.3s 
+2026-10-25 13:34:21 | INFO | Epoch 14/30 | Loss: 4.5943 | Val Recall@20: 0.5731 | Val MRR@20: 0.2030 | Val NDCG@20: 0.2847 | Time: 298.2s [BEST]
+2026-10-25 13:39:36 | INFO | Epoch 15/30 | Loss: 4.5571 | Val Recall@20: 0.5720 | Val MRR@20: 0.2032 | Val NDCG@20: 0.2847 | Time: 315.0s [BEST]
+2026-10-25 13:44:57 | INFO | Epoch 16/30 | Loss: 4.5229 | Val Recall@20: 0.5722 | Val MRR@20: 0.2028 | Val NDCG@20: 0.2845 | Time: 320.9s 
+2026-10-25 13:50:13 | INFO | Epoch 17/30 | Loss: 4.4901 | Val Recall@20: 0.5748 | Val MRR@20: 0.2025 | Val NDCG@20: 0.2849 | Time: 315.9s 
+2026-10-25 13:55:36 | INFO | Epoch 18/30 | Loss: 4.4620 | Val Recall@20: 0.5708 | Val MRR@20: 0.2012 | Val NDCG@20: 0.2829 | Time: 323.0s 
+2026-10-25 14:00:44 | INFO | Epoch 19/30 | Loss: 4.4332 | Val Recall@20: 0.5726 | Val MRR@20: 0.1998 | Val NDCG@20: 0.2822 | Time: 308.5s 
+2026-10-25 14:06:01 | INFO | Epoch 20/30 | Loss: 4.4050 | Val Recall@20: 0.5731 | Val MRR@20: 0.2045 | Val NDCG@20: 0.2860 | Time: 316.5s [BEST]
+2026-10-25 14:11:17 | INFO | Epoch 21/30 | Loss: 4.3788 | Val Recall@20: 0.5690 | Val MRR@20: 0.2010 | Val NDCG@20: 0.2825 | Time: 315.7s 
+2026-10-25 14:16:32 | INFO | Epoch 22/30 | Loss: 4.3539 | Val Recall@20: 0.5694 | Val MRR@20: 0.2010 | Val NDCG@20: 0.2825 | Time: 315.8s 
+2026-10-25 14:21:50 | INFO | Epoch 23/30 | Loss: 4.3323 | Val Recall@20: 0.5655 | Val MRR@20: 0.1990 | Val NDCG@20: 0.2802 | Time: 317.8s 
+2026-10-25 14:27:06 | INFO | Epoch 24/30 | Loss: 4.3110 | Val Recall@20: 0.5679 | Val MRR@20: 0.2004 | Val NDCG@20: 0.2818 | Time: 316.2s 
+2026-10-25 14:32:26 | INFO | Epoch 25/30 | Loss: 4.2898 | Val Recall@20: 0.5684 | Val MRR@20: 0.1994 | Val NDCG@20: 0.2810 | Time: 319.5s 
+2026-10-25 14:32:26 | INFO | Early stopping kích hoạt tại epoch 25 (không cải thiện mrr@20 sau 5 epochs). Best epoch = 20 (0.2045).
+2026-10-25 14:32:26 | INFO | Kiểm định Option B: Độ lệch tối đa của 7,647 Controlled Cold Embeddings = 0.00000000 (Chưa huấn luyện 100%).
+2026-10-25 14:32:39 | INFO | ------------------------------------------------------------------------
+2026-10-25 14:32:39 | INFO | [KẾT QUẢ TEST WARM] Recall@20: 0.5618 | MRR@20: 0.1976 | NDCG@20: 0.2782
+2026-10-25 14:32:39 | INFO | [TEST LAST-ITEM]    Recall@20: 0.5640 | MRR@20: 0.2139 | NDCG@20: 0.2917
+2026-10-25 14:32:39 | INFO | [POPULARITY BIAS]   Coverage_warm@20: 0.8960 | Gini_warm@20: 0.7019 | ARP@20: 77.11
+2026-10-25 14:32:39 | INFO | Đã xuất đầy đủ kết quả vào: D:\DA3-ThienlechdophobientrongkhonggianEmbedding\runs\narm\seed_2025 và D:\DA3-ThienlechdophobientrongkhonggianEmbedding\results\item_level\narm_seed2025.parquet
+2026-10-25 14:32:39 | INFO | ========================================================================

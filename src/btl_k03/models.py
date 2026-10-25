@@ -142,7 +142,10 @@ class BaseSBRModel(nn.Module):
         seq_output = self.encode_session(item_seq, item_seq_len)
         logits = torch.matmul(seq_output, self.item_embedding.weight.transpose(0, 1))
         if mask_cold_and_pad:
-            logits = logits.masked_fill(~self.trainable_warm_mask.unsqueeze(0), mask_fill_value)
+            fill_val = mask_fill_value
+            if logits.dtype == torch.float16 and fill_val < -60000.0:
+                fill_val = -10000.0
+            logits = logits.masked_fill(~self.trainable_warm_mask.unsqueeze(0), fill_val)
         return logits
 
 

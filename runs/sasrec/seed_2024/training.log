@@ -1,7 +1,32 @@
-2026-10-25 14:58:47 | INFO | ========================================================================
-2026-10-25 14:58:47 | INFO | BẮT ĐẦU HUẤN LUYỆN MÔ HÌNH SASREC | SEED = 2024
-2026-10-25 14:58:47 | INFO | Thiết bị chạy (Device) : cpu
-2026-10-25 14:58:47 | INFO | Thư mục lưu kết quả    : D:\DA3-ThienlechdophobientrongkhonggianEmbedding\runs\sasrec\seed_2024
-2026-10-25 14:58:47 | INFO | ========================================================================
-2026-10-25 14:58:47 | INFO | Tổng số item trong bảng Embedding: 37,583 (+1 hàng padding 0) | Warm trainable: 29,936 | Controlled cold (đóng băng): 7,647
-2026-10-25 14:58:47 | INFO | Tổng số tham số mô hình: 2,508,672
+2026-10-25 13:28:02 | INFO | ========================================================================
+2026-10-25 13:28:02 | INFO | BẮT ĐẦU HUẤN LUYỆN MÔ HÌNH SASREC | SEED = 2024
+2026-10-25 13:28:02 | INFO | Thiết bị chạy (Device) : cuda
+2026-10-25 13:28:02 | INFO | Thư mục lưu kết quả    : /kaggle/working/runs/sasrec/seed_2024
+2026-10-25 13:28:02 | INFO | ========================================================================
+2026-10-25 13:28:03 | INFO | Tổng số item trong bảng Embedding: 37,583 (+1 hàng padding 0) | Warm trainable: 29,936 | Controlled cold (đóng băng): 7,647
+2026-10-25 13:28:03 | INFO | Tổng số tham số mô hình: 2,508,672
+2026-10-25 13:28:41 | INFO | Epoch 01/30 | Loss: 7.7017 | Val Recall@20: 0.5026 | Val MRR@20: 0.1683 | Val NDCG@20: 0.2419 | Time: 32.2s [BEST]
+2026-10-25 13:29:13 | INFO | Epoch 02/30 | Loss: 5.0724 | Val Recall@20: 0.5636 | Val MRR@20: 0.1999 | Val NDCG@20: 0.2801 | Time: 32.0s [BEST]
+2026-10-25 13:29:45 | INFO | Epoch 03/30 | Loss: 4.6621 | Val Recall@20: 0.5709 | Val MRR@20: 0.2058 | Val NDCG@20: 0.2865 | Time: 32.3s [BEST]
+2026-10-25 13:30:17 | INFO | Epoch 04/30 | Loss: 4.5328 | Val Recall@20: 0.5743 | Val MRR@20: 0.2075 | Val NDCG@20: 0.2886 | Time: 32.2s [BEST]
+2026-10-25 13:30:50 | INFO | Epoch 05/30 | Loss: 4.4572 | Val Recall@20: 0.5738 | Val MRR@20: 0.2080 | Val NDCG@20: 0.2888 | Time: 32.4s [BEST]
+2026-10-25 13:31:22 | INFO | Epoch 06/30 | Loss: 4.4032 | Val Recall@20: 0.5778 | Val MRR@20: 0.2086 | Val NDCG@20: 0.2902 | Time: 32.3s [BEST]
+2026-10-25 13:31:54 | INFO | Epoch 07/30 | Loss: 4.3610 | Val Recall@20: 0.5777 | Val MRR@20: 0.2097 | Val NDCG@20: 0.2911 | Time: 32.1s [BEST]
+2026-10-25 13:32:26 | INFO | Epoch 08/30 | Loss: 4.3229 | Val Recall@20: 0.5811 | Val MRR@20: 0.2104 | Val NDCG@20: 0.2922 | Time: 32.4s [BEST]
+2026-10-25 13:32:59 | INFO | Epoch 09/30 | Loss: 4.2930 | Val Recall@20: 0.5781 | Val MRR@20: 0.2111 | Val NDCG@20: 0.2922 | Time: 32.2s [BEST]
+2026-10-25 13:33:31 | INFO | Epoch 10/30 | Loss: 4.2637 | Val Recall@20: 0.5795 | Val MRR@20: 0.2107 | Val NDCG@20: 0.2923 | Time: 32.1s 
+2026-10-25 13:34:03 | INFO | Epoch 11/30 | Loss: 4.2377 | Val Recall@20: 0.5789 | Val MRR@20: 0.2112 | Val NDCG@20: 0.2925 | Time: 32.3s [BEST]
+2026-10-25 13:34:35 | INFO | Epoch 12/30 | Loss: 4.2129 | Val Recall@20: 0.5775 | Val MRR@20: 0.2115 | Val NDCG@20: 0.2925 | Time: 32.1s [BEST]
+2026-10-25 13:35:07 | INFO | Epoch 13/30 | Loss: 4.1909 | Val Recall@20: 0.5779 | Val MRR@20: 0.2115 | Val NDCG@20: 0.2925 | Time: 32.2s 
+2026-10-25 13:35:40 | INFO | Epoch 14/30 | Loss: 4.1693 | Val Recall@20: 0.5783 | Val MRR@20: 0.2101 | Val NDCG@20: 0.2915 | Time: 32.3s 
+2026-10-25 13:36:12 | INFO | Epoch 15/30 | Loss: 4.1486 | Val Recall@20: 0.5767 | Val MRR@20: 0.2106 | Val NDCG@20: 0.2916 | Time: 32.1s 
+2026-10-25 13:36:44 | INFO | Epoch 16/30 | Loss: 4.1302 | Val Recall@20: 0.5767 | Val MRR@20: 0.2105 | Val NDCG@20: 0.2915 | Time: 32.3s 
+2026-10-25 13:37:16 | INFO | Epoch 17/30 | Loss: 4.1137 | Val Recall@20: 0.5762 | Val MRR@20: 0.2102 | Val NDCG@20: 0.2912 | Time: 32.2s 
+2026-10-25 13:37:16 | INFO | Early stopping kích hoạt tại epoch 17 (không cải thiện mrr@20 sau 5 epochs). Best epoch = 12 (0.2115).
+2026-10-25 13:37:16 | INFO | Kiểm định Option B: Độ lệch tối đa của 7,647 Controlled Cold Embeddings = 0.00000000 (Chưa huấn luyện 100%).
+2026-10-25 13:37:19 | INFO | ------------------------------------------------------------------------
+2026-10-25 13:37:19 | INFO | [KẾT QUẢ TEST WARM] Recall@20: 0.5705 | MRR@20: 0.2075 | NDCG@20: 0.2877
+2026-10-25 13:37:19 | INFO | [TEST LAST-ITEM]    Recall@20: 0.5783 | MRR@20: 0.2260 | NDCG@20: 0.3041
+2026-10-25 13:37:19 | INFO | [POPULARITY BIAS]   Coverage_warm@20: 0.9213 | Gini_warm@20: 0.6862 | ARP@20: 73.84
+2026-10-25 13:37:19 | INFO | Đã xuất đầy đủ kết quả vào: /kaggle/working/runs/sasrec/seed_2024 và /kaggle/working/results/item_level/sasrec_seed2024.parquet
+2026-10-25 13:37:19 | INFO | ========================================================================

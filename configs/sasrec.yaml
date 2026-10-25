@@ -21,3 +21,4 @@ training_overrides:
   train_batch_size: 512
   eval_batch_size: 1024
   epochs: 30
+  use_amp: false

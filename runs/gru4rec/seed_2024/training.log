@@ -5,3 +5,32 @@
 2026-10-24 22:17:29 | INFO | ========================================================================
 2026-10-24 22:17:29 | INFO | Tổng số item trong bảng Embedding: 37,583 (+1 hàng padding 0) | Warm trainable: 29,936 | Controlled cold (đóng băng): 7,647
 2026-10-24 22:17:29 | INFO | Tổng số tham số mô hình: 2,487,360
+2026-10-24 22:21:41 | INFO | Epoch 01/30 | Loss: 9.2070 | Val Recall@20: 0.1155 | Val MRR@20: 0.0285 | Val NDCG@20: 0.0472 | Time: 250.4s [BEST]
+2026-10-24 22:27:04 | INFO | Epoch 02/30 | Loss: 7.3100 | Val Recall@20: 0.3432 | Val MRR@20: 0.0988 | Val NDCG@20: 0.1521 | Time: 322.9s [BEST]
+2026-10-24 22:32:41 | INFO | Epoch 03/30 | Loss: 6.1791 | Val Recall@20: 0.4516 | Val MRR@20: 0.1339 | Val NDCG@20: 0.2034 | Time: 337.1s [BEST]
+2026-10-24 22:37:19 | INFO | Epoch 04/30 | Loss: 5.6271 | Val Recall@20: 0.5002 | Val MRR@20: 0.1571 | Val NDCG@20: 0.2324 | Time: 277.5s [BEST]
+2026-10-24 22:42:33 | INFO | Epoch 05/30 | Loss: 5.3169 | Val Recall@20: 0.5224 | Val MRR@20: 0.1705 | Val NDCG@20: 0.2480 | Time: 314.1s [BEST]
+2026-10-24 22:48:14 | INFO | Epoch 06/30 | Loss: 5.1096 | Val Recall@20: 0.5394 | Val MRR@20: 0.1805 | Val NDCG@20: 0.2597 | Time: 341.0s [BEST]
+2026-10-24 22:52:47 | INFO | Epoch 07/30 | Loss: 4.9690 | Val Recall@20: 0.5498 | Val MRR@20: 0.1869 | Val NDCG@20: 0.2670 | Time: 273.3s [BEST]
+2026-10-24 22:58:29 | INFO | Epoch 08/30 | Loss: 4.8622 | Val Recall@20: 0.5571 | Val MRR@20: 0.1925 | Val NDCG@20: 0.2730 | Time: 342.1s [BEST]
+2026-10-24 23:03:17 | INFO | Epoch 09/30 | Loss: 4.7737 | Val Recall@20: 0.5602 | Val MRR@20: 0.1963 | Val NDCG@20: 0.2767 | Time: 287.7s [BEST]
+2026-10-24 23:07:28 | INFO | Epoch 10/30 | Loss: 4.7026 | Val Recall@20: 0.5643 | Val MRR@20: 0.1975 | Val NDCG@20: 0.2785 | Time: 251.6s [BEST]
+2026-10-24 23:12:06 | INFO | Epoch 11/30 | Loss: 4.6406 | Val Recall@20: 0.5628 | Val MRR@20: 0.1981 | Val NDCG@20: 0.2788 | Time: 277.2s [BEST]
+2026-10-24 23:17:03 | INFO | Epoch 12/30 | Loss: 4.5851 | Val Recall@20: 0.5637 | Val MRR@20: 0.2001 | Val NDCG@20: 0.2806 | Time: 297.9s [BEST]
+2026-10-24 23:22:03 | INFO | Epoch 13/30 | Loss: 4.5378 | Val Recall@20: 0.5652 | Val MRR@20: 0.2001 | Val NDCG@20: 0.2808 | Time: 299.8s 
+2026-10-24 23:29:03 | INFO | Epoch 14/30 | Loss: 4.4894 | Val Recall@20: 0.5652 | Val MRR@20: 0.2006 | Val NDCG@20: 0.2813 | Time: 419.8s [BEST]
+2026-10-24 23:33:20 | INFO | Epoch 15/30 | Loss: 4.4491 | Val Recall@20: 0.5650 | Val MRR@20: 0.2013 | Val NDCG@20: 0.2817 | Time: 257.2s [BEST]
+2026-10-24 23:38:17 | INFO | Epoch 16/30 | Loss: 4.4079 | Val Recall@20: 0.5648 | Val MRR@20: 0.2025 | Val NDCG@20: 0.2827 | Time: 297.2s [BEST]
+2026-10-24 23:43:22 | INFO | Epoch 17/30 | Loss: 4.3722 | Val Recall@20: 0.5660 | Val MRR@20: 0.2025 | Val NDCG@20: 0.2830 | Time: 304.8s 
+2026-10-24 23:48:26 | INFO | Epoch 18/30 | Loss: 4.3356 | Val Recall@20: 0.5619 | Val MRR@20: 0.1997 | Val NDCG@20: 0.2798 | Time: 304.0s 
+2026-10-24 23:53:18 | INFO | Epoch 19/30 | Loss: 4.2996 | Val Recall@20: 0.5597 | Val MRR@20: 0.1986 | Val NDCG@20: 0.2786 | Time: 291.8s 
+2026-10-24 23:57:44 | INFO | Epoch 20/30 | Loss: 4.2701 | Val Recall@20: 0.5583 | Val MRR@20: 0.1980 | Val NDCG@20: 0.2778 | Time: 266.2s 
+2026-10-25 00:02:04 | INFO | Epoch 21/30 | Loss: 4.2392 | Val Recall@20: 0.5580 | Val MRR@20: 0.1995 | Val NDCG@20: 0.2788 | Time: 260.1s 
+2026-10-25 00:02:04 | INFO | Early stopping kích hoạt tại epoch 21 (không cải thiện mrr@20 sau 5 epochs). Best epoch = 16 (0.2025).
+2026-10-25 00:02:04 | INFO | Kiểm định Option B: Độ lệch tối đa của 7,647 Controlled Cold Embeddings = 0.00000000 (Chưa huấn luyện 100%).
+2026-10-25 00:02:14 | INFO | ------------------------------------------------------------------------
+2026-10-25 00:02:14 | INFO | [KẾT QUẢ TEST WARM] Recall@20: 0.5555 | MRR@20: 0.1979 | NDCG@20: 0.2770
+2026-10-25 00:02:14 | INFO | [TEST LAST-ITEM]    Recall@20: 0.5591 | MRR@20: 0.2134 | NDCG@20: 0.2902
+2026-10-25 00:02:14 | INFO | [POPULARITY BIAS]   Coverage_warm@20: 0.8886 | Gini_warm@20: 0.7010 | ARP@20: 76.87
+2026-10-25 00:02:14 | INFO | Đã xuất đầy đủ kết quả vào: D:\DA3-ThienlechdophobientrongkhonggianEmbedding\runs\gru4rec\seed_2024 và D:\DA3-ThienlechdophobientrongkhonggianEmbedding\results\item_level\gru4rec_seed2024.parquet
+2026-10-25 00:02:14 | INFO | ========================================================================
