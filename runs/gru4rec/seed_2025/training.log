@@ -1,0 +1,14 @@
+2026-10-25 00:02:15 | INFO | ========================================================================
+2026-10-25 00:02:15 | INFO | BẮT ĐẦU HUẤN LUYỆN MÔ HÌNH GRU4REC | SEED = 2025
+2026-10-25 00:02:15 | INFO | Thiết bị chạy (Device) : cpu
+2026-10-25 00:02:15 | INFO | Thư mục lưu kết quả    : D:\DA3-ThienlechdophobientrongkhonggianEmbedding\runs\gru4rec\seed_2025
+2026-10-25 00:02:15 | INFO | ========================================================================
+2026-10-25 00:02:15 | INFO | Tổng số item trong bảng Embedding: 37,583 (+1 hàng padding 0) | Warm trainable: 29,936 | Controlled cold (đóng băng): 7,647
+2026-10-25 00:02:15 | INFO | Tổng số tham số mô hình: 2,487,360
+2026-10-25 00:06:58 | INFO | Epoch 01/30 | Loss: 9.1089 | Val Recall@20: 0.1486 | Val MRR@20: 0.0381 | Val NDCG@20: 0.0620 | Time: 282.7s [BEST]
+2026-10-25 00:11:53 | INFO | Epoch 02/30 | Loss: 7.2074 | Val Recall@20: 0.3310 | Val MRR@20: 0.0954 | Val NDCG@20: 0.1466 | Time: 295.4s [BEST]
+2026-10-25 00:16:15 | INFO | Epoch 03/30 | Loss: 6.2195 | Val Recall@20: 0.4315 | Val MRR@20: 0.1277 | Val NDCG@20: 0.1942 | Time: 262.0s [BEST]
+2026-10-25 00:20:58 | INFO | Epoch 04/30 | Loss: 5.6856 | Val Recall@20: 0.4894 | Val MRR@20: 0.1499 | Val NDCG@20: 0.2243 | Time: 282.8s [BEST]
+2026-10-25 00:25:19 | INFO | Epoch 05/30 | Loss: 5.3880 | Val Recall@20: 0.5199 | Val MRR@20: 0.1665 | Val NDCG@20: 0.2441 | Time: 262.5s [BEST]
+2026-10-25 00:30:05 | INFO | Epoch 06/30 | Loss: 5.1883 | Val Recall@20: 0.5338 | Val MRR@20: 0.1762 | Val NDCG@20: 0.2549 | Time: 286.0s [BEST]
+2026-10-25 00:34:43 | INFO | Epoch 07/30 | Loss: 5.0356 | Val Recall@20: 0.5480 | Val MRR@20: 0.1839 | Val NDCG@20: 0.2642 | Time: 277.9s [BEST]

@@ -1,0 +1,7 @@
+2026-10-25 12:22:24 | INFO | ========================================================================
+2026-10-25 12:22:24 | INFO | BẮT ĐẦU HUẤN LUYỆN MÔ HÌNH NARM | SEED = 2025
+2026-10-25 12:22:24 | INFO | Thiết bị chạy (Device) : cpu
+2026-10-25 12:22:24 | INFO | Thư mục lưu kết quả    : D:\DA3-ThienlechdophobientrongkhonggianEmbedding\runs\narm\seed_2025
+2026-10-25 12:22:24 | INFO | ========================================================================
+2026-10-25 12:22:24 | INFO | Tổng số item trong bảng Embedding: 37,583 (+1 hàng padding 0) | Warm trainable: 29,936 | Controlled cold (đóng băng): 7,647
+2026-10-25 12:22:24 | INFO | Tổng số tham số mô hình: 2,528,384

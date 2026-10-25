@@ -1,1 +1,20 @@
+# Cấu hình mô hình GRU4Rec (Hidasi et al., ICLR 2016)
+# Kiến trúc chuẩn RecBole: Item Embedding -> Dropout -> GRU -> Dense Projection -> Full-Catalog Dot Product
 
+model_name: gru4rec
+architecture: GRU4Rec
+
+model_params:
+  embedding_size: 64
+  hidden_size: 128
+  num_layers: 1
+  embedding_dropout: 0.25
+  hidden_dropout: 0.20
+  init_std: 0.02
+
+training_overrides:
+  learning_rate: 0.001
+  weight_decay: 0.0
+  train_batch_size: 512
+  eval_batch_size: 1024
+  epochs: 30

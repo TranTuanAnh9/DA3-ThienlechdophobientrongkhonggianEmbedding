@@ -1,0 +1,126 @@
+project_name: BTL-K03-Popularity-Bias-Embedding-Geometry
+dataset: diginetica
+seeds:
+- 2024
+- 2025
+embedding_size: 64
+max_seq_length: 50
+padding_idx: 0
+data_files:
+  processed_dir: data/processed/diginetica
+  item_mapping: item_mapping.csv
+  category_mapping: category_mapping.csv
+  popularity_groups: popularity_groups.csv
+  cold_items: cold_items.csv
+  dataset_statistics: dataset_statistics.json
+  train_examples: train_examples.parquet
+  validation_examples: validation_examples.parquet
+  test_examples: test_examples.parquet
+  validation_last_item_examples: validation_last_item_examples.parquet
+  test_last_item_examples: test_last_item_examples.parquet
+  validation_events_full: validation_events_full.parquet
+  test_events_full: test_events_full.parquet
+cold_start_protocol:
+  keep_cold_in_embedding_table: true
+  freeze_cold_item_gradients: true
+  mask_cold_items_in_loss: true
+  mask_cold_items_in_ranking: true
+  mask_fill_value: -1.0e9
+  verify_zero_drift_after_training: true
+training:
+  loss_type: CE
+  optimizer: adam
+  learning_rate: 0.001
+  weight_decay: 0.0
+  grad_clip_norm: 5.0
+  train_batch_size: 512
+  eval_batch_size: 1024
+  epochs: 30
+  num_workers: 0
+  pin_memory: true
+  use_amp: true
+early_stopping:
+  monitor: mrr@20
+  mode: max
+  patience: 5
+  min_delta: 0.0001
+evaluation:
+  topk: 20
+  candidate_set: warm_only
+  accuracy_metrics:
+  - recall@20
+  - mrr@20
+  - ndcg@20
+  popularity_bias_metrics:
+  - coverage@20
+  - gini@20
+  - arp@20
+  evaluate_last_item_split: true
+  evaluate_cold_start_impact: true
+embedding_geometry:
+  pair_sample_size_per_group: 50000
+  bootstrap_iterations: 1000
+  confidence_level: 0.95
+  tsne:
+    sample_size: 8000
+    perplexity: 30
+    n_iter: 1000
+    init: pca
+    metric: euclidean
+    random_seeds:
+    - 2024
+    - 2025
+data_config:
+  dataset: diginetica
+  raw_dir: data/raw/diginetica
+  interim_dir: data/interim/diginetica
+  processed_dir: data/processed/diginetica
+  recbole_dir: data/processed/recbole/diginetica
+  ordering:
+    within_session:
+    - timeframe
+    - row_order
+    split_session_by: last_event_date
+    keep_repeated_clicks: true
+    keep_midnight_crossing_sessions: true
+  filtering:
+    min_session_length: 2
+    min_item_frequency: 5
+    fixed_point: true
+  temporal_split:
+    strategy: last_n_calendar_days
+    validation_days: 7
+    test_days: 7
+  cold_start:
+    protocol: controlled_item_holdout_option_b_assumption
+    ratio: 0.2
+    unit: item
+    stratify_by: category
+    seed: 2024
+    denominator: pre_holdout_filtered_train_catalog
+    keep_in_item_mapping: true
+    usage: visualization_only
+    exclude_from_main_warm_evaluation: true
+    require_one_warm_item_per_category: true
+    min_pre_holdout_items_per_category: 5
+    assumption_note: Mục 1.6/Option B không có trong tài liệu được cung cấp. Giao
+      thức này là giả định minh bạch dựa trên mô tả cold-start 20% và embedding cold
+      chưa huấn luyện; nếu nhận được quy định gốc thì quy định gốc sẽ thay thế.
+  popularity_groups:
+    source: final_train_frequency_only
+    method: tie_aware_item_frequency_quantiles
+    rare_quantile: 0.2
+    popular_quantile: 0.8
+  exports:
+    parquet_compression: zstd
+    padding_internal_item_id: 0
+model_name: narm
+architecture: NARM
+model_params:
+  embedding_size: 64
+  hidden_size: 128
+  n_layers: 1
+  embedding_dropout: 0.25
+  ct_dropout: 0.5
+  init_std: 0.02
+seed: 2024

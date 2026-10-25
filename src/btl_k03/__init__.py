@@ -1,1 +1,78 @@
+"""
+Package btl_k03 — Hỗ trợ huấn luyện GRU4Rec, NARM, SASRec và phân tích
+Popularity Bias + Hình học không gian Embedding trên bộ dữ liệu Diginetica.
+"""
 
+from .paths import (
+    CONFIGS_DIR,
+    DATA_DIR,
+    FIGURES_DIR,
+    INTERIM_DIGI_DIR,
+    ITEM_LEVEL_DIR,
+    PROCESSED_DIGI_DIR,
+    PROJECT_ROOT,
+    RAW_DIGI_DIR,
+    RECBOLE_DIGI_DIR,
+    RESULTS_DIR,
+    RUNS_DIR,
+    STAT_TESTS_DIR,
+    TABLES_DIR,
+    ensure_output_dirs,
+    find_project_root,
+    get_run_dir,
+)
+from .popularity_metrics import (
+    compute_arp,
+    compute_catalog_coverage,
+    compute_cold_start_test_diagnostic,
+    compute_gini_coefficient,
+    compute_lorenz_curve,
+    compute_ranking_metrics_from_predictions,
+    compute_stratified_ranking_metrics,
+    evaluate_top20_popularity_bias,
+)
+from .utils import (
+    create_run_logger,
+    load_experiment_config,
+    load_item_mapping,
+    load_json,
+    load_yaml,
+    save_json,
+    save_yaml,
+    set_global_seed,
+)
+
+__all__ = [
+    "PROJECT_ROOT",
+    "CONFIGS_DIR",
+    "DATA_DIR",
+    "RAW_DIGI_DIR",
+    "INTERIM_DIGI_DIR",
+    "PROCESSED_DIGI_DIR",
+    "RECBOLE_DIGI_DIR",
+    "RUNS_DIR",
+    "RESULTS_DIR",
+    "ITEM_LEVEL_DIR",
+    "TABLES_DIR",
+    "FIGURES_DIR",
+    "STAT_TESTS_DIR",
+    "find_project_root",
+    "get_run_dir",
+    "ensure_output_dirs",
+    "set_global_seed",
+    "load_yaml",
+    "save_yaml",
+    "load_json",
+    "save_json",
+    "load_experiment_config",
+    "load_item_mapping",
+    "create_run_logger",
+    "compute_gini_coefficient",
+    "compute_lorenz_curve",
+    "compute_catalog_coverage",
+    "compute_arp",
+    "compute_ranking_metrics_from_predictions",
+    "compute_stratified_ranking_metrics",
+    "evaluate_top20_popularity_bias",
+    "compute_cold_start_test_diagnostic",
+]

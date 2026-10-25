@@ -1,0 +1,146 @@
+{
+  "model": "gru4rec",
+  "architecture": "GRU4Rec",
+  "seed": 2024,
+  "device": "cpu",
+  "best_epoch": 16,
+  "best_validation_score": 0.20252481540886585,
+  "monitor_metric": "mrr@20",
+  "cold_embedding_max_abs_drift": 0.0,
+  "test_warm_all_prefix": {
+    "recall@20": 0.5555361115972101,
+    "mrr@20": 0.19785528978455985,
+    "ndcg@20": 0.2769902372803495
+  },
+  "test_warm_last_item": {
+    "recall@20": 0.5590649675553123,
+    "mrr@20": 0.21343124896611193,
+    "ndcg@20": 0.2901998759809815
+  },
+  "test_warm_by_popularity_group": [
+    {
+      "target_group": "all_warm",
+      "num_examples": 40001,
+      "example_share_pct": 100.0,
+      "recall@20": 0.5555361115972101,
+      "mrr@20": 0.19785528978455985,
+      "ndcg@20": 0.2769902372803495
+    },
+    {
+      "target_group": "popular",
+      "num_examples": 23091,
+      "example_share_pct": 57.726056848578786,
+      "recall@20": 0.6439305357065523,
+      "mrr@20": 0.24070440133167723,
+      "ndcg@20": 0.33072635826659696
+    },
+    {
+      "target_group": "medium",
+      "num_examples": 14300,
+      "example_share_pct": 35.74910627234319,
+      "recall@20": 0.45545454545454545,
+      "mrr@20": 0.14433704419887006,
+      "ndcg@20": 0.21200127779572334
+    },
+    {
+      "target_group": "rare",
+      "num_examples": 2610,
+      "example_share_pct": 6.524836879078023,
+      "recall@20": 0.3218390804597701,
+      "mrr@20": 0.11198635382321018,
+      "ndcg@20": 0.15764975871203998
+    }
+  ],
+  "popularity_bias": {
+    "topk": 20,
+    "num_queries": 40001,
+    "total_recommendation_slots": 800020,
+    "warm_catalog_size": 29936,
+    "full_catalog_size": 37583,
+    "unique_recommended_items_warm": 26602,
+    "unique_recommended_items_full": 26602,
+    "coverage_warm@20": 0.8886290753607696,
+    "coverage_full@20": 0.7078200250113083,
+    "gini_warm@20": 0.7010030321128663,
+    "gini_full@20": 0.7618398416659332,
+    "arp@20": 76.86924576885578,
+    "arp_log1p@20": 3.7655593373707834,
+    "popular_group_exposure_share_pct": 63.80690482737931,
+    "rare_group_exposure_share_pct": 4.256018599535012
+  },
+  "exposure_by_group": [
+    {
+      "popularity_group": "popular",
+      "catalog_items": 6112,
+      "warm_catalog_share_pct": 20.416889363976484,
+      "train_interactions": 394016,
+      "train_interaction_share_pct": 60.65218462144722,
+      "recommended_slots": 510468,
+      "exposure_share_pct": 63.80690482737931,
+      "exposure_to_train_ratio": 1.0520132988716213,
+      "unique_items_recommended": 6087,
+      "within_group_coverage_pct": 99.59096858638743,
+      "mean_rec_count_per_item": 83.51897905759162,
+      "median_rec_count_per_item": 52.0
+    },
+    {
+      "popularity_group": "medium",
+      "catalog_items": 16940,
+      "warm_catalog_share_pct": 56.58738642437199,
+      "train_interactions": 218091,
+      "train_interaction_share_pct": 33.571468154278115,
+      "recommended_slots": 255503,
+      "exposure_share_pct": 31.937076573085672,
+      "exposure_to_train_ratio": 0.9513160528553123,
+      "unique_items_recommended": 15394,
+      "within_group_coverage_pct": 90.87367178276268,
+      "mean_rec_count_per_item": 15.082821723730815,
+      "median_rec_count_per_item": 9.0
+    },
+    {
+      "popularity_group": "rare",
+      "catalog_items": 6884,
+      "warm_catalog_share_pct": 22.995724211651524,
+      "train_interactions": 37525,
+      "train_interaction_share_pct": 5.776347224274666,
+      "recommended_slots": 34049,
+      "exposure_share_pct": 4.256018599535012,
+      "exposure_to_train_ratio": 0.7368010326057639,
+      "unique_items_recommended": 5121,
+      "within_group_coverage_pct": 74.3898895990703,
+      "mean_rec_count_per_item": 4.9461069145845435,
+      "median_rec_count_per_item": 3.0
+    },
+    {
+      "popularity_group": "cold",
+      "catalog_items": 7647,
+      "warm_catalog_share_pct": 0.0,
+      "train_interactions": 0,
+      "train_interaction_share_pct": 0.0,
+      "recommended_slots": 0,
+      "exposure_share_pct": 0.0,
+      "exposure_to_train_ratio": 0.0,
+      "unique_items_recommended": 0,
+      "within_group_coverage_pct": 0.0,
+      "mean_rec_count_per_item": 0.0,
+      "median_rec_count_per_item": 0.0
+    }
+  ],
+  "cold_start_diagnostic": {
+    "full_test_sessions_len_ge_2": 17155,
+    "full_test_all_prefix_targets": 71290,
+    "warm_evaluated_targets": 40001,
+    "controlled_cold_targets_in_test": 11614,
+    "controlled_cold_target_share_pct": 16.291204937578904,
+    "natural_cold_targets_in_test": 4745,
+    "natural_cold_target_share_pct": 6.655912470192173,
+    "other_unseen_or_filtered_targets": 11073,
+    "warm_target_coverage_in_full_test_pct": 56.110253892551555,
+    "warm_recall@20": 0.5555361115972101,
+    "warm_mrr@20": 0.19785528978455985,
+    "warm_ndcg@20": 0.2769902372803495,
+    "effective_full_test_recall@20_with_cold_zero": 0.3117127226820031,
+    "effective_full_test_mrr@20_with_cold_zero": 0.11101710543796015,
+    "effective_full_test_ndcg@20_with_cold_zero": 0.15541992539558508
+  }
+}

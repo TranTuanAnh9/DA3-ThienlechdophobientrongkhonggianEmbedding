@@ -1,1 +1,93 @@
+# Cấu hình dùng chung cho cả ba mô hình SBR: GRU4Rec, NARM, SASRec
+# Đảm bảo tính công bằng tuyệt đối khi so sánh chất lượng gợi ý, popularity bias và hình học embedding
 
+project_name: BTL-K03-Popularity-Bias-Embedding-Geometry
+dataset: diginetica
+
+# Hai random seed bắt buộc theo yêu cầu đề tài (Mục 11, 15)
+seeds:
+  - 2024
+  - 2025
+
+# Không gian biểu diễn dùng chung để so sánh công bằng L2 norm, cosine và t-SNE
+embedding_size: 64
+max_seq_length: 50
+padding_idx: 0
+
+# Dữ liệu đầu vào từ bước 02_data_preprocessing.ipynb
+data_files:
+  processed_dir: data/processed/diginetica
+  item_mapping: item_mapping.csv
+  category_mapping: category_mapping.csv
+  popularity_groups: popularity_groups.csv
+  cold_items: cold_items.csv
+  dataset_statistics: dataset_statistics.json
+  # Dữ liệu huấn luyện và đánh giá chính (All-prefix augmentation giúp đạt Recall@20 chuẩn benchmark ~45-52%)
+  train_examples: train_examples.parquet
+  validation_examples: validation_examples.parquet
+  test_examples: test_examples.parquet
+  # Dữ liệu đánh giá bổ sung theo phiên cuối (Last-item) và kiểm toán Cold-start 20% (Full events)
+  validation_last_item_examples: validation_last_item_examples.parquet
+  test_last_item_examples: test_last_item_examples.parquet
+  validation_events_full: validation_events_full.parquet
+  test_events_full: test_events_full.parquet
+
+# Giao thức Cold-start 20% (Option B) trong lúc huấn luyện và suy diễn
+cold_start_protocol:
+  keep_cold_in_embedding_table: true
+  freeze_cold_item_gradients: true
+  mask_cold_items_in_loss: true
+  mask_cold_items_in_ranking: true
+  mask_fill_value: -1.0e9
+  verify_zero_drift_after_training: true
+
+# Cấu hình tối ưu hóa và vòng lặp huấn luyện
+training:
+  loss_type: CE                # Full Cross-Entropy trên tập warm catalog (cho chất lượng cao nhất trên Diginetica)
+  optimizer: adam
+  learning_rate: 0.001
+  weight_decay: 0.0
+  grad_clip_norm: 5.0
+  train_batch_size: 512
+  eval_batch_size: 1024
+  epochs: 30
+  num_workers: 0
+  pin_memory: true
+  use_amp: true                # Tự động bật Mixed Precision (FP16) khi chạy trên GPU CUDA để tăng tốc gấp 2-3 lần
+
+# Cấu hình dừng sớm (Early Stopping) dựa trên tập Validation Warm
+early_stopping:
+  monitor: mrr@20
+  mode: max
+  patience: 5
+  min_delta: 0.0001
+
+# Cấu hình đánh giá đầu ra và thiên lệch độ phổ biến
+evaluation:
+  topk: 20
+  candidate_set: warm_only     # 29,936 warm items (candidate_for_main_evaluation == True)
+  accuracy_metrics:
+    - recall@20
+    - mrr@20
+    - ndcg@20
+  popularity_bias_metrics:
+    - coverage@20
+    - gini@20
+    - arp@20
+  evaluate_last_item_split: true
+  evaluate_cold_start_impact: true
+
+# Cấu hình phân tích hình học không gian embedding (SV2)
+embedding_geometry:
+  pair_sample_size_per_group: 50000
+  bootstrap_iterations: 1000
+  confidence_level: 0.95
+  tsne:
+    sample_size: 8000
+    perplexity: 30
+    n_iter: 1000
+    init: pca
+    metric: euclidean
+    random_seeds:
+      - 2024
+      - 2025

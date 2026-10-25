@@ -1,1 +1,20 @@
+# Cấu hình mô hình NARM — Neural Attentive Session-based Recommendation (Li et al., CIKM 2017)
+# Kiến trúc chuẩn RecBole: Global GRU Encoder + Local Attention Encoder -> Bi-linear/Dense Projection -> Full-Catalog Dot Product
 
+model_name: narm
+architecture: NARM
+
+model_params:
+  embedding_size: 64
+  hidden_size: 128
+  n_layers: 1
+  embedding_dropout: 0.25
+  ct_dropout: 0.50
+  init_std: 0.02
+
+training_overrides:
+  learning_rate: 0.001
+  weight_decay: 0.0
+  train_batch_size: 512
+  eval_batch_size: 1024
+  epochs: 30
