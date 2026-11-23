@@ -1,0 +1,73 @@
+# Cấu hình tiền xử lý dữ liệu Yoochoose (RecSys Challenge 2015)
+# Thiết kế dựa trực tiếp trên các phát hiện EDA đặc thù của Yoochoose:
+# 1. Tháng 04–05/2014 có 100% category = '0', tháng 06 có 78.4% = '0'; từ tháng 07–09/2014 có ~95% non-zero.
+# 2. Mốc thời gian chạy từ 2014-04-01 03:00:00Z đến 2014-09-30 02:59:59Z -> dùng cửa sổ 24h neo theo max_ts.
+# 3. 95.3% item mang nhãn 'S' (Special Offer) và 96.4% item mang mã brand đều có category chuẩn 1..12.
+# 4. Nhát cắt gần nhất 1/32 phiên (~8 ngày cuối tháng 09/2014) vừa nằm trọn trong giai đoạn category sạch,
+#    vừa cho quy mô ~430k train examples & ~40k test examples tương đương Diginetica và khả thi trên MX550/CPU.
+
+dataset: yoochoose
+
+raw_clicks_file: data/raw/yoochoose-clicks.dat/yoochoose-clicks.dat
+raw_buys_file: data/raw/yoochoose-buys.dat/yoochoose-buys.dat
+interim_dir: data/interim/yoochoose
+processed_dir: data/processed/yoochoose
+results_dir: results/yoochoose
+
+subsetting:
+  # Chọn 1/N phiên gần nhất theo timestamp cuối phiên (32 = Yoochoose 1/32; có thể đổi sang 64 hoặc 16)
+  strategy: recent_session_fraction
+  fraction_denominator: 32
+  use_buys_in_sequences: false
+
+ordering:
+  within_session: [timestamp_ms, row_order]
+  drop_exact_duplicate_events: true     # Chỉ bỏ bản ghi trùng tuyệt đối (session_id, timestamp_ms, item_id)
+  keep_repeated_clicks: true            # Giữ nguyên click lặp khác thời điểm để bảo toàn hành vi quay lại item
+  split_session_by: session_last_ts_ms
+
+filtering:
+  min_session_length: 2
+  min_item_frequency: 5
+  fixed_point: true
+
+temporal_split:
+  # Neo theo max_ts của dataset (24h/ngày) để tránh mẩu 3 giờ cuối ngày 2014-09-30 theo UTC
+  strategy: last_n_24h_windows_from_max_ts
+  validation_days: 1
+  test_days: 1
+
+category_resolution:
+  # Quy tắc gán category chuẩn cho từng item CHỈ TỪ TẬP TRAIN (tránh rò rỉ tương lai):
+  # Ưu tiên 1: category chuẩn 1..12 xuất hiện nhiều nhất -> has_regular_category = True
+  # Ưu tiên 2: item chỉ có 'S' (không có 1..12) -> mã dự phòng 13 (special_offer_only)
+  # Ưu tiên 3: item chỉ có brand ID (không có 1..12, không có S) -> mã dự phòng 14 (brand_only)
+  # Ưu tiên 4: item chỉ có '0' -> mã dự phòng 0 (unknown_0)
+  source: pre_holdout_filtered_train_only
+  regular_category_ids: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+  special_offer_only_code: 13
+  brand_only_code: 14
+  unknown_code: 0
+
+cold_start:
+  protocol: controlled_item_holdout_option_b
+  ratio: 0.20
+  unit: item
+  stratify_by: category
+  seed: 2024
+  denominator: pre_holdout_filtered_train_catalog
+  keep_in_item_mapping: true
+  usage: visualization_only
+  exclude_from_main_warm_evaluation: true
+  require_one_warm_item_per_category: true
+  min_pre_holdout_items_per_category: 5
+
+popularity_groups:
+  source: final_train_frequency_only
+  method: tie_aware_item_frequency_quantiles
+  rare_quantile: 0.20
+  popular_quantile: 0.80
+
+exports:
+  parquet_compression: zstd
+  padding_internal_item_id: 0

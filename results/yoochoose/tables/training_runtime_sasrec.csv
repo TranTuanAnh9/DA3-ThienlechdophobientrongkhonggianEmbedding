@@ -1,0 +1,3 @@
+dataset,model,architecture,seed,device,started_at,finished_at,epochs_ran,best_epoch,total_train_time_sec,total_train_time_min,mean_epoch_time_sec,total_seed_wall_time_sec,total_seed_wall_time_min
+yoochoose,sasrec,SASRec,2024,cuda,2026-11-23 02:08:27,2026-11-23 02:15:09,18,13,396.18,6.6,22.0,402.4,6.71
+yoochoose,sasrec,SASRec,2025,cuda,2026-11-23 02:15:09,2026-11-23 02:19:39,12,7,267.2,4.45,22.26,270.1,4.5

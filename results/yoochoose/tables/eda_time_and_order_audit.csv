@@ -1,0 +1,6 @@
+chi_tieu,gia_tri,nhan_xet
+Khoảng thời gian UTC,2014-04-01 03:00:00.124000+00:00  →  2014-09-30 02:59:59.430000+00:00,Biên ngày tự nhiên tại 03:00 UTC (182 ngày tròn 24h)
+Số block phiên liên tiếp vs. duy nhất,"9,249,729 / 9,249,729",Interleaved = 0 (không phiên nào bị xé lẻ)
+Sự kiện đảo thứ tự thời gian trong phiên,0,File raw đã theo thứ tự thời gian (khác Diginetica 58.21%)
+Cặp sự kiện trùng chính xác mili-giây,"1,117",Dùng khóa phá hòa row_order khi sắp xếp ổn định
+"Bản ghi trùng tuyệt đối (session, ts, item)",68,Cần loại bỏ ở bước làm sạch

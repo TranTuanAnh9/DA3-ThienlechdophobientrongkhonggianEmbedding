@@ -117,6 +117,14 @@ def build_item_level_analysis_table(
             "category_warm_peers": with_geometry["category_warm_peers"].astype(np.int64),
         }
     )
+    for opt_col in (
+        "category_source",
+        "has_regular_category",
+        "ever_special_offer",
+        "special_offer_click_share",
+    ):
+        if opt_col in with_geometry.columns:
+            result[opt_col] = with_geometry[opt_col].to_numpy()
     return result
 
 

@@ -1,0 +1,7 @@
+metric,order_seed_2024,order_seed_2025,stable_order
+recall@20,SASREC > NARM > GRU4REC,SASREC > NARM > GRU4REC,True
+coverage_warm@20,SASREC > NARM > GRU4REC,SASREC > NARM > GRU4REC,True
+gini_warm@20,SASREC > NARM > GRU4REC,SASREC > NARM > GRU4REC,True
+arp@20,SASREC > NARM > GRU4REC,SASREC > NARM > GRU4REC,True
+spearman_freq_norm,GRU4REC > SASREC > NARM,GRU4REC > SASREC > NARM,True
+effective_rank_pr,SASREC > NARM > GRU4REC,SASREC > GRU4REC > NARM,False

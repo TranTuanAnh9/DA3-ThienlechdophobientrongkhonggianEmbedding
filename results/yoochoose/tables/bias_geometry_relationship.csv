@@ -1,0 +1,25 @@
+model,seed,scope,pair,var_x,var_y,n,rho,p_value,ci_low,ci_high
+GRU4REC,2024,warm_only,train_freq <-> embedding_norm,train_freq,embedding_norm,8326,-0.6990046869317299,0.0,-0.7102039488383334,-0.686571859985705
+GRU4REC,2024,warm_only,train_freq <-> rec_count,train_freq,rec_count,8326,0.7603148939908609,0.0,0.7502988834394207,0.7702601280266104
+GRU4REC,2024,warm_only,embedding_norm <-> rec_count,embedding_norm,rec_count,8326,-0.6009094512138691,0.0,-0.616373454780955,-0.5859494237832147
+GRU4REC,2024,all_catalog_incl_cold,train_freq <-> embedding_norm,train_freq,embedding_norm,10442,0.1313801698750084,1.9936592608834532e-41,0.11282377673323156,0.15221362742002323
+GRU4REC,2025,warm_only,train_freq <-> embedding_norm,train_freq,embedding_norm,8326,-0.6615492443873213,0.0,-0.6739649198112432,-0.6483663048300876
+GRU4REC,2025,warm_only,train_freq <-> rec_count,train_freq,rec_count,8326,0.7540074286138652,0.0,0.7435800409574763,0.764637396040213
+GRU4REC,2025,warm_only,embedding_norm <-> rec_count,embedding_norm,rec_count,8326,-0.5666912250728934,0.0,-0.5817584487563153,-0.5515718224068906
+GRU4REC,2025,all_catalog_incl_cold,train_freq <-> embedding_norm,train_freq,embedding_norm,10442,0.1504374266567496,6.578945791876407e-54,0.1299818772624712,0.16925340063243136
+NARM,2024,warm_only,train_freq <-> embedding_norm,train_freq,embedding_norm,8326,-0.6157162794915928,0.0,-0.6304794358382949,-0.6005088523479281
+NARM,2024,warm_only,train_freq <-> rec_count,train_freq,rec_count,8326,0.7547234059163614,0.0,0.7452546018708643,0.7651460447333214
+NARM,2024,warm_only,embedding_norm <-> rec_count,embedding_norm,rec_count,8326,-0.5198067984514145,0.0,-0.5368345180903912,-0.501600254727587
+NARM,2024,all_catalog_incl_cold,train_freq <-> embedding_norm,train_freq,embedding_norm,10442,0.17375715062078587,1.41921486875082e-71,0.15574542703642832,0.192716740064578
+NARM,2025,warm_only,train_freq <-> embedding_norm,train_freq,embedding_norm,8326,-0.4849856499797016,0.0,-0.5008781356331009,-0.4693471675779336
+NARM,2025,warm_only,train_freq <-> rec_count,train_freq,rec_count,8326,0.7505571492431081,0.0,0.7398799936285232,0.7614451942306237
+NARM,2025,warm_only,embedding_norm <-> rec_count,embedding_norm,rec_count,8326,-0.396770406450085,0.0,-0.4162247526555381,-0.37916256648078567
+NARM,2025,all_catalog_incl_cold,train_freq <-> embedding_norm,train_freq,embedding_norm,10442,0.2402726422717769,5.06212055591003e-137,0.2205082059329177,0.2575489122223547
+SASREC,2024,warm_only,train_freq <-> embedding_norm,train_freq,embedding_norm,8326,-0.6619952212683572,0.0,-0.6759584680766988,-0.6480748543439059
+SASREC,2024,warm_only,train_freq <-> rec_count,train_freq,rec_count,8326,0.7212259544271266,0.0,0.7093630710490207,0.7324338227254389
+SASREC,2024,warm_only,embedding_norm <-> rec_count,embedding_norm,rec_count,8326,-0.5407271419377336,0.0,-0.5562916323600992,-0.5232471302923136
+SASREC,2024,all_catalog_incl_cold,train_freq <-> embedding_norm,train_freq,embedding_norm,10442,0.15021051448155523,9.485047678992394e-54,0.13184535559416818,0.1697105256103575
+SASREC,2025,warm_only,train_freq <-> embedding_norm,train_freq,embedding_norm,8326,-0.6108019501161841,0.0,-0.6239881747711408,-0.5963652844340739
+SASREC,2025,warm_only,train_freq <-> rec_count,train_freq,rec_count,8326,0.7213494687620645,0.0,0.7095981316106575,0.7329311715466583
+SASREC,2025,warm_only,embedding_norm <-> rec_count,embedding_norm,rec_count,8326,-0.5081218254129084,0.0,-0.5255734608593581,-0.492897140291083
+SASREC,2025,all_catalog_incl_cold,train_freq <-> embedding_norm,train_freq,embedding_norm,10442,0.17625755190976217,1.2564632530996102e-73,0.15526540646245915,0.19470006859735947

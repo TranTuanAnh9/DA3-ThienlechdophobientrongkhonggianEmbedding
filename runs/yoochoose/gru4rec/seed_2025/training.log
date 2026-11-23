@@ -1,0 +1,44 @@
+2026-11-23 01:55:14 | INFO | ========================================================================
+2026-11-23 01:55:14 | INFO | BẮT ĐẦU HUẤN LUYỆN MÔ HÌNH GRU4REC | DATASET = YOOCHOOSE | SEED = 2025
+2026-11-23 01:55:14 | INFO | Thời điểm bắt đầu      : 2026-11-23 01:55:14
+2026-11-23 01:55:14 | INFO | Thiết bị chạy (Device) : cuda
+2026-11-23 01:55:14 | INFO | Thư mục lưu kết quả    : /tmp/da3_work/runs/yoochoose/gru4rec/seed_2025
+2026-11-23 01:55:14 | INFO | ========================================================================
+2026-11-23 01:55:15 | INFO | Tổng số item trong bảng Embedding: 10,442 (+1 hàng padding 0) | Warm trainable: 8,326 | Controlled cold (đóng băng): 2,116
+2026-11-23 01:55:15 | INFO | Tổng số tham số mô hình: 750,336
+2026-11-23 01:55:25 | INFO | Epoch 01/30 | Loss: 6.4673 | Val Recall@20: 0.4673 | Val MRR@20: 0.1558 | Val NDCG@20: 0.2252 | Time: 10.4s [BEST]
+2026-11-23 01:55:35 | INFO | Epoch 02/30 | Loss: 5.1751 | Val Recall@20: 0.6023 | Val MRR@20: 0.2420 | Val NDCG@20: 0.3231 | Time: 10.1s [BEST]
+2026-11-23 01:55:46 | INFO | Epoch 03/30 | Loss: 4.6601 | Val Recall@20: 0.6680 | Val MRR@20: 0.2746 | Val NDCG@20: 0.3638 | Time: 10.3s [BEST]
+2026-11-23 01:55:56 | INFO | Epoch 04/30 | Loss: 4.3904 | Val Recall@20: 0.6979 | Val MRR@20: 0.2963 | Val NDCG@20: 0.3876 | Time: 10.2s [BEST]
+2026-11-23 01:56:06 | INFO | Epoch 05/30 | Loss: 4.2395 | Val Recall@20: 0.7129 | Val MRR@20: 0.3048 | Val NDCG@20: 0.3978 | Time: 10.1s [BEST]
+2026-11-23 01:56:16 | INFO | Epoch 06/30 | Loss: 4.1362 | Val Recall@20: 0.7197 | Val MRR@20: 0.3121 | Val NDCG@20: 0.4049 | Time: 10.4s [BEST]
+2026-11-23 01:56:26 | INFO | Epoch 07/30 | Loss: 4.0541 | Val Recall@20: 0.7250 | Val MRR@20: 0.3192 | Val NDCG@20: 0.4119 | Time: 10.1s [BEST]
+2026-11-23 01:56:37 | INFO | Epoch 08/30 | Loss: 3.9908 | Val Recall@20: 0.7275 | Val MRR@20: 0.3207 | Val NDCG@20: 0.4137 | Time: 10.1s [BEST]
+2026-11-23 01:56:47 | INFO | Epoch 09/30 | Loss: 3.9421 | Val Recall@20: 0.7311 | Val MRR@20: 0.3231 | Val NDCG@20: 0.4164 | Time: 10.3s [BEST]
+2026-11-23 01:56:57 | INFO | Epoch 10/30 | Loss: 3.9041 | Val Recall@20: 0.7315 | Val MRR@20: 0.3270 | Val NDCG@20: 0.4195 | Time: 10.0s [BEST]
+2026-11-23 01:57:07 | INFO | Epoch 11/30 | Loss: 3.8721 | Val Recall@20: 0.7331 | Val MRR@20: 0.3297 | Val NDCG@20: 0.4220 | Time: 10.1s [BEST]
+2026-11-23 01:57:17 | INFO | Epoch 12/30 | Loss: 3.8445 | Val Recall@20: 0.7352 | Val MRR@20: 0.3295 | Val NDCG@20: 0.4223 | Time: 10.2s 
+2026-11-23 01:57:27 | INFO | Epoch 13/30 | Loss: 3.8215 | Val Recall@20: 0.7340 | Val MRR@20: 0.3314 | Val NDCG@20: 0.4235 | Time: 10.2s [BEST]
+2026-11-23 01:57:37 | INFO | Epoch 14/30 | Loss: 3.7977 | Val Recall@20: 0.7383 | Val MRR@20: 0.3326 | Val NDCG@20: 0.4254 | Time: 9.9s [BEST]
+2026-11-23 01:57:48 | INFO | Epoch 15/30 | Loss: 3.7799 | Val Recall@20: 0.7389 | Val MRR@20: 0.3338 | Val NDCG@20: 0.4265 | Time: 10.2s [BEST]
+2026-11-23 01:57:58 | INFO | Epoch 16/30 | Loss: 3.7620 | Val Recall@20: 0.7368 | Val MRR@20: 0.3332 | Val NDCG@20: 0.4254 | Time: 10.1s 
+2026-11-23 01:58:08 | INFO | Epoch 17/30 | Loss: 3.7459 | Val Recall@20: 0.7365 | Val MRR@20: 0.3326 | Val NDCG@20: 0.4249 | Time: 10.1s 
+2026-11-23 01:58:18 | INFO | Epoch 18/30 | Loss: 3.7319 | Val Recall@20: 0.7372 | Val MRR@20: 0.3359 | Val NDCG@20: 0.4277 | Time: 10.2s [BEST]
+2026-11-23 01:58:28 | INFO | Epoch 19/30 | Loss: 3.7163 | Val Recall@20: 0.7377 | Val MRR@20: 0.3350 | Val NDCG@20: 0.4272 | Time: 10.1s 
+2026-11-23 01:58:38 | INFO | Epoch 20/30 | Loss: 3.7038 | Val Recall@20: 0.7367 | Val MRR@20: 0.3368 | Val NDCG@20: 0.4282 | Time: 10.0s [BEST]
+2026-11-23 01:58:48 | INFO | Epoch 21/30 | Loss: 3.6907 | Val Recall@20: 0.7391 | Val MRR@20: 0.3354 | Val NDCG@20: 0.4277 | Time: 10.2s 
+2026-11-23 01:58:58 | INFO | Epoch 22/30 | Loss: 3.6794 | Val Recall@20: 0.7348 | Val MRR@20: 0.3373 | Val NDCG@20: 0.4282 | Time: 10.0s [BEST]
+2026-11-23 01:59:09 | INFO | Epoch 23/30 | Loss: 3.6688 | Val Recall@20: 0.7365 | Val MRR@20: 0.3351 | Val NDCG@20: 0.4268 | Time: 10.4s 
+2026-11-23 01:59:19 | INFO | Epoch 24/30 | Loss: 3.6587 | Val Recall@20: 0.7355 | Val MRR@20: 0.3369 | Val NDCG@20: 0.4281 | Time: 10.0s 
+2026-11-23 01:59:29 | INFO | Epoch 25/30 | Loss: 3.6463 | Val Recall@20: 0.7371 | Val MRR@20: 0.3365 | Val NDCG@20: 0.4281 | Time: 10.0s 
+2026-11-23 01:59:39 | INFO | Epoch 26/30 | Loss: 3.6380 | Val Recall@20: 0.7347 | Val MRR@20: 0.3366 | Val NDCG@20: 0.4277 | Time: 10.1s 
+2026-11-23 01:59:49 | INFO | Epoch 27/30 | Loss: 3.6290 | Val Recall@20: 0.7357 | Val MRR@20: 0.3365 | Val NDCG@20: 0.4277 | Time: 10.3s 
+2026-11-23 01:59:49 | INFO | Early stopping kích hoạt tại epoch 27 (không cải thiện mrr@20 sau 5 epochs). Best epoch = 22 (0.3373).
+2026-11-23 01:59:49 | INFO | Kiểm định Option B: Độ lệch tối đa của 2,116 Controlled Cold Embeddings = 0.00000000 (Chưa huấn luyện 100%).
+2026-11-23 01:59:51 | INFO | ------------------------------------------------------------------------
+2026-11-23 01:59:51 | INFO | [THỜI GIAN TRAIN]   Epochs: 27 | Train loop: 274.4s (4.57 phút) | TB/epoch: 10.2s | Tổng cả seed: 276.9s (4.61 phút)
+2026-11-23 01:59:51 | INFO | [KẾT QUẢ TEST WARM] Recall@20: 0.7287 | MRR@20: 0.3255 | NDCG@20: 0.4175
+2026-11-23 01:59:51 | INFO | [TEST LAST-ITEM]    Recall@20: 0.7258 | MRR@20: 0.3667 | NDCG@20: 0.4490
+2026-11-23 01:59:51 | INFO | [POPULARITY BIAS]   Coverage_warm@20: 0.9079 | Gini_warm@20: 0.8917 | ARP@20: 780.26
+2026-11-23 01:59:51 | INFO | Đã xuất đầy đủ kết quả vào: /tmp/da3_work/runs/yoochoose/gru4rec/seed_2025, /tmp/da3_work/results/yoochoose/item_level/gru4rec_seed2025.parquet và /tmp/da3_work/results/yoochoose/tables/training_runtime_summary.csv
+2026-11-23 01:59:51 | INFO | ========================================================================

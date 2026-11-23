@@ -1,0 +1,16 @@
+{
+  "dataset": "yoochoose",
+  "model": "gru4rec",
+  "architecture": "GRU4Rec",
+  "seed": 2024,
+  "device": "cuda",
+  "started_at": "2026-11-23 01:50:02",
+  "finished_at": "2026-11-23 01:55:14",
+  "epochs_ran": 30,
+  "best_epoch": 26,
+  "total_train_time_sec": 305.44,
+  "total_train_time_min": 5.09,
+  "mean_epoch_time_sec": 10.17,
+  "total_seed_wall_time_sec": 311.34,
+  "total_seed_wall_time_min": 5.19
+}

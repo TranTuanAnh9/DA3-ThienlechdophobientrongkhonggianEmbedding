@@ -1,0 +1,4 @@
+split,events,sessions,items
+train,764225,187175,20103
+validation,58309,12386,6417
+test,71367,15340,6828

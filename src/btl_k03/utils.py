@@ -12,7 +12,7 @@ import numpy as np
 import pandas as pd
 import yaml
 
-from .paths import CONFIGS_DIR, PROCESSED_DIGI_DIR
+from .paths import CONFIGS_DIR, PROCESSED_DIGI_DIR, get_dataset_paths
 
 
 def set_global_seed(seed: int, deterministic_cudnn: bool = True) -> None:
@@ -59,13 +59,21 @@ def save_json(data: dict[str, Any], path: Path) -> None:
         json.dump(data, stream, ensure_ascii=False, indent=2)
 
 
-def load_experiment_config(model_name: str) -> dict[str, Any]:
-    """Đọc và hợp nhất configs/data.yaml, configs/common.yaml và configs/{model_name}.yaml."""
-    data_cfg = load_yaml(CONFIGS_DIR / "data.yaml")
-    common_cfg = load_yaml(CONFIGS_DIR / "common.yaml")
-    model_cfg = load_yaml(CONFIGS_DIR / f"{model_name.lower()}.yaml")
+def load_experiment_config(model_name: str, dataset: str = "diginetica") -> dict[str, Any]:
+    """Đọc và hợp nhất data.yaml, common.yaml và {model_name}.yaml theo dataset."""
+    ds = dataset.lower()
+    ds_cfg_dir = get_dataset_paths(ds)["config_dir"]
+
+    def _resolve_cfg(filename: str) -> Path:
+        ds_path = ds_cfg_dir / filename
+        return ds_path if ds_path.is_file() else (CONFIGS_DIR / filename)
+
+    data_cfg = load_yaml(_resolve_cfg("data.yaml"))
+    common_cfg = load_yaml(_resolve_cfg("common.yaml"))
+    model_cfg = load_yaml(_resolve_cfg(f"{model_name.lower()}.yaml"))
 
     merged = copy.deepcopy(common_cfg)
+    merged["dataset"] = ds
     merged["data_config"] = data_cfg
     merged["model_name"] = model_cfg.get("model_name", model_name.lower())
     merged["architecture"] = model_cfg.get("architecture", model_name.upper())

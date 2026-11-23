@@ -1,0 +1,17 @@
+check,passed
+sessions_disjoint_train_val,True
+sessions_disjoint_train_test,True
+sessions_disjoint_val_test,True
+temporal_boundary_train_lt_val,True
+temporal_boundary_val_in_window,True
+temporal_boundary_test_gt_val,True
+all_sessions_len_ge_2,True
+events_ordered_within_session,True
+controlled_cold_exact_20pct,True
+zero_cold_leakage_in_train_events,True
+zero_cold_leakage_in_train_targets,True
+val_test_warm_only_items,True
+every_cold_category_has_warm_peer,True
+internal_item_id_1_to_N_unique,True
+train_freq_sum_equals_train_events,True
+no_missing_category_in_mapping,True

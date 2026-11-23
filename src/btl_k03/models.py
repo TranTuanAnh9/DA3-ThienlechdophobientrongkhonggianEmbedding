@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import copy
+from datetime import datetime
 import math
 import time
 from pathlib import Path
@@ -15,7 +16,13 @@ from torch.utils.data import DataLoader, Dataset
 from tqdm.auto import tqdm
 
 from .embedding_analysis import build_item_level_analysis_table
-from .paths import ITEM_LEVEL_DIR, PROCESSED_DIGI_DIR, ensure_output_dirs, get_run_dir
+from .paths import (
+    ITEM_LEVEL_DIR,
+    PROCESSED_DIGI_DIR,
+    ensure_output_dirs,
+    get_dataset_paths,
+    get_run_dir,
+)
 from .popularity_metrics import (
     compute_cold_start_test_diagnostic,
     compute_ranking_metrics_from_predictions,
@@ -289,7 +296,8 @@ class NARMModel(BaseSBRModel):
         alpha = self.v_t(torch.sigmoid(q1 + q2))  # (B, L, 1)
 
         mask = item_seq.gt(0).unsqueeze(2)  # (B, L, 1)
-        alpha = alpha.masked_fill(~mask, -1.0e9)
+        alpha_fill = -10000.0 if alpha.dtype == torch.float16 else -1.0e9
+        alpha = alpha.masked_fill(~mask, alpha_fill)
         attn_weights = torch.softmax(alpha, dim=1)
         c_local = torch.sum(attn_weights * gru_out, dim=1)
 
@@ -472,7 +480,7 @@ def build_model_from_config(
     warm_mask = torch.zeros(num_items_with_pad, dtype=torch.bool)
     warm_ids = item_mapping.loc[
         item_mapping["is_trainable_warm"], "internal_item_id"
-    ].to_numpy(dtype=np.int64)
+    ].to_numpy(dtype=np.int64, copy=True)
     warm_mask[warm_ids] = True
 
     model_name = config["model_name"].lower()
@@ -602,17 +610,25 @@ def train_and_evaluate_seed(
     model_name: str,
     seed: int,
     config: dict[str, Any] | None = None,
-    processed_dir: Path = PROCESSED_DIGI_DIR,
+    processed_dir: Path | None = None,
     max_epochs_override: int | None = None,
     device_str: str | None = None,
+    dataset: str = "diginetica",
 ) -> dict[str, Any]:
     """
     Thực thi trọn vẹn chu trình Huấn luyện -> Early Stopping trên Validation -> Đánh giá trên Test ->
     Sinh top20.parquet -> Trích xuất item_embeddings.npy -> Kiểm định Cold-start Option B ->
-    Xuất bảng phân tích item-level cho một cặp (model_name, seed).
+    Xuất bảng phân tích item-level cho một cặp (model_name, seed) theo dataset.
     """
-    ensure_output_dirs()
-    cfg = copy.deepcopy(config) if config is not None else load_experiment_config(model_name)
+    ds = (config.get("dataset", dataset) if config is not None else dataset).lower()
+    ds_paths = get_dataset_paths(ds)
+    ensure_output_dirs(ds)
+
+    if processed_dir is None:
+        processed_dir = ds_paths["processed_dir"]
+
+    cfg = copy.deepcopy(config) if config is not None else load_experiment_config(model_name, dataset=ds)
+    cfg["dataset"] = ds
     cfg["seed"] = int(seed)
     if max_epochs_override is not None:
         cfg["training"]["epochs"] = int(max_epochs_override)
@@ -624,11 +640,15 @@ def train_and_evaluate_seed(
     else:
         device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-    run_dir = get_run_dir(model_name, seed)
-    logger = create_run_logger(run_dir / "training.log", f"{model_name}_seed_{seed}")
+    run_dir = get_run_dir(model_name, seed, dataset=ds)
+    logger = create_run_logger(run_dir / "training.log", f"{ds}_{model_name}_seed_{seed}")
+
+    seed_wall_t0 = time.perf_counter()
+    seed_started_at = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
     logger.info("=" * 72)
-    logger.info(f"BẮT ĐẦU HUẤN LUYỆN MÔ HÌNH {model_name.upper()} | SEED = {seed}")
+    logger.info(f"BẮT ĐẦU HUẤN LUYỆN MÔ HÌNH {model_name.upper()} | DATASET = {ds.upper()} | SEED = {seed}")
+    logger.info(f"Thời điểm bắt đầu      : {seed_started_at}")
     logger.info(f"Thiết bị chạy (Device) : {device}")
     logger.info(f"Thư mục lưu kết quả    : {run_dir}")
     logger.info("=" * 72)
@@ -707,6 +727,8 @@ def train_and_evaluate_seed(
     checkpoint_path = run_dir / "checkpoint.pth"
 
     # 3. Vòng lặp huấn luyện qua các Epoch
+    train_loop_t0 = time.perf_counter()
+    cumulative_train_sec = 0.0
     for epoch in range(1, epochs + 1):
         t0 = time.perf_counter()
         model.train()
@@ -781,6 +803,7 @@ def train_and_evaluate_seed(
         else:
             epochs_no_improve += 1
 
+        cumulative_train_sec += float(elapsed)
         row = {
             "epoch": int(epoch),
             "train_loss": float(train_loss),
@@ -790,8 +813,11 @@ def train_and_evaluate_seed(
             "validation_score": current_score,
             "is_best": bool(is_best),
             "elapsed_time": float(elapsed),
+            "cumulative_train_time_sec": float(cumulative_train_sec),
         }
         history_rows.append(row)
+        # Lưu tạm training_history.csv sau mỗi epoch để không mất dữ liệu thời gian nếu bị gián đoạn
+        pd.DataFrame(history_rows).to_csv(run_dir / "training_history.csv", index=False)
 
         logger.info(
             f"Epoch {epoch:02d}/{epochs:02d} | Loss: {train_loss:.4f} | "
@@ -809,6 +835,12 @@ def train_and_evaluate_seed(
             )
             break
 
+    total_train_time_sec = float(time.perf_counter() - train_loop_t0)
+    epochs_ran = int(len(history_rows))
+    mean_epoch_time_sec = float(
+        np.mean([r["elapsed_time"] for r in history_rows]) if history_rows else 0.0
+    )
+
     # 4. Nạp lại Best Checkpoint và kiểm tra tính bất biến của Controlled Cold Embeddings
     best_ckpt = torch.load(checkpoint_path, map_location=device, weights_only=False)
     model.load_state_dict(best_ckpt["model_state_dict"])
@@ -823,7 +855,7 @@ def train_and_evaluate_seed(
             f"Rò rỉ gradient vào Controlled Cold Items! max_abs_drift = {max_cold_drift}"
         )
     logger.info(
-        f"Kiểm định Option B: Độ lệch tối đa của 7,647 Controlled Cold Embeddings = {max_cold_drift:.8f} (Chưa huấn luyện 100%)."
+        f"Kiểm định Option B: Độ lệch tối đa của {len(cold_internal_ids):,} Controlled Cold Embeddings = {max_cold_drift:.8f} (Chưa huấn luyện 100%)."
     )
 
     item_embeddings = full_weight_np[1 : max_internal_id + 1].astype(np.float32)
@@ -898,10 +930,58 @@ def train_and_evaluate_seed(
         embeddings=item_embeddings,
         item_rec_catalog=item_rec_catalog,
     )
-    item_level_path = ITEM_LEVEL_DIR / f"{model_name.lower()}_seed{seed}.parquet"
+    item_level_path = ds_paths["item_level_dir"] / f"{model_name.lower()}_seed{seed}.parquet"
     item_level_df.to_parquet(item_level_path, index=False, compression="zstd")
 
+    total_seed_wall_time_sec = float(time.perf_counter() - seed_wall_t0)
+    seed_finished_at = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    runtime_info = {
+        "dataset": ds,
+        "model": model_name.lower(),
+        "architecture": cfg.get("architecture", model_name.upper()),
+        "seed": int(seed),
+        "device": str(device),
+        "started_at": seed_started_at,
+        "finished_at": seed_finished_at,
+        "epochs_ran": epochs_ran,
+        "best_epoch": int(best_epoch),
+        "total_train_time_sec": round(total_train_time_sec, 2),
+        "total_train_time_min": round(total_train_time_sec / 60.0, 2),
+        "mean_epoch_time_sec": round(mean_epoch_time_sec, 2),
+        "total_seed_wall_time_sec": round(total_seed_wall_time_sec, 2),
+        "total_seed_wall_time_min": round(total_seed_wall_time_sec / 60.0, 2),
+    }
+    save_json(runtime_info, run_dir / "training_runtime.json")
+
+    # Lưu bảng thời gian riêng từng mô hình (an toàn tuyệt đối khi tải 3 file zip từ Kaggle giải nén về máy)
+    per_model_rt_path = ds_paths["tables_dir"] / f"training_runtime_{model_name.lower()}.csv"
+    new_runtime_row = pd.DataFrame([runtime_info])
+    if per_model_rt_path.is_file():
+        existing_m_rt = pd.read_csv(per_model_rt_path)
+        mask_m_dup = existing_m_rt["seed"].astype(int) == int(seed)
+        updated_m_rt = pd.concat([existing_m_rt.loc[~mask_m_dup], new_runtime_row], ignore_index=True)
+    else:
+        updated_m_rt = new_runtime_row
+    updated_m_rt = updated_m_rt.sort_values(["seed"], kind="mergesort").reset_index(drop=True)
+    updated_m_rt.to_csv(per_model_rt_path, index=False)
+
+    # Cập nhật bảng tổng hợp thời gian train cho cả 3 mô hình x 2 seed (upsert theo dataset, model, seed)
+    runtime_csv_path = ds_paths["tables_dir"] / "training_runtime_summary.csv"
+    if runtime_csv_path.is_file():
+        existing_rt = pd.read_csv(runtime_csv_path)
+        mask_dup = (
+            (existing_rt["dataset"].astype(str).str.lower() == ds)
+            & (existing_rt["model"].astype(str).str.lower() == model_name.lower())
+            & (existing_rt["seed"].astype(int) == int(seed))
+        )
+        updated_rt = pd.concat([existing_rt.loc[~mask_dup], new_runtime_row], ignore_index=True)
+    else:
+        updated_rt = new_runtime_row
+    updated_rt = updated_rt.sort_values(["model", "seed"], kind="mergesort").reset_index(drop=True)
+    updated_rt.to_csv(runtime_csv_path, index=False)
+
     full_test_metrics_payload = {
+        "dataset": ds,
         "model": model_name.lower(),
         "architecture": cfg.get("architecture", model_name.upper()),
         "seed": int(seed),
@@ -910,6 +990,7 @@ def train_and_evaluate_seed(
         "best_validation_score": float(best_score),
         "monitor_metric": monitor_metric,
         "cold_embedding_max_abs_drift": max_cold_drift,
+        "runtime": runtime_info,
         "test_warm_all_prefix": test_metrics_main,
         "test_warm_last_item": test_metrics_last_item,
         "test_warm_by_popularity_group": test_stratified_df.to_dict(orient="records"),
@@ -920,6 +1001,11 @@ def train_and_evaluate_seed(
     save_json(full_test_metrics_payload, run_dir / "test_metrics.json")
 
     logger.info("-" * 72)
+    logger.info(
+        f"[THỜI GIAN TRAIN]   Epochs: {epochs_ran} | Train loop: {total_train_time_sec:.1f}s "
+        f"({total_train_time_sec / 60.0:.2f} phút) | TB/epoch: {mean_epoch_time_sec:.1f}s | "
+        f"Tổng cả seed: {total_seed_wall_time_sec:.1f}s ({total_seed_wall_time_sec / 60.0:.2f} phút)"
+    )
     logger.info(
         f"[KẾT QUẢ TEST WARM] Recall@{topk}: {test_metrics_main[f'recall@{topk}']:.4f} | "
         f"MRR@{topk}: {test_metrics_main[f'mrr@{topk}']:.4f} | "
@@ -935,12 +1021,13 @@ def train_and_evaluate_seed(
         f"Gini_warm@{topk}: {bias_summary[f'gini_warm@{topk}']:.4f} | "
         f"ARP@{topk}: {bias_summary[f'arp@{topk}']:.2f}"
     )
-    logger.info(f"Đã xuất đầy đủ kết quả vào: {run_dir} và {item_level_path}")
+    logger.info(f"Đã xuất đầy đủ kết quả vào: {run_dir}, {item_level_path} và {runtime_csv_path}")
     logger.info("=" * 72)
 
     return {
         "run_dir": run_dir,
         "history_df": history_df,
+        "runtime_info": runtime_info,
         "test_metrics": full_test_metrics_payload,
         "test_stratified_df": test_stratified_df,
         "group_exposure_df": group_exposure_df,

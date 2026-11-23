@@ -1,0 +1,13 @@
+stage,events,sessions,items,prefix_target_examples,note
+01_raw_full_clicks,33003944,9249729,52739,23754215,Toàn bộ file yoochoose-clicks.dat gốc
+02_recent_1_32_subset,968054,289054,21337,679000,Từ 2014-09-22 12:42:33.836000+00:00 đến 2014-09-30 02:59:59.430000+00:00
+03_drop_exact_duplicates,968054,289054,21337,679000,Loại 0 bản ghi trùng tuyệt đối
+04_filter_initial_len_ge_2,893901,214901,20614,679000,Giữ phiên có >= 2 click
+05a_temporal_train_raw,764225,187175,20103,577050,session_last_ts <= 2014-09-28 02:59:59.430000+00:00
+05b_temporal_val_raw,58309,12386,6417,45923,2014-09-28 02:59:59.430000+00:00 < session_last_ts <= 2014-09-29 02:59:59.430000+00:00
+05c_temporal_test_raw,71367,15340,6828,56027,2014-09-29 02:59:59.430000+00:00 < session_last_ts <= 2014-09-30 02:59:59.430000+00:00
+06_train_pre_holdout_fixed_point,741697,182184,10582,559513,"Hội tụ sau 5 vòng (len>=2, freq>=5)"
+07_train_after_drop_controlled_cold,594134,173350,8466,420784,"Loại 2,116 controlled cold items"
+08_train_final_warm,570955,150666,8326,420289,Fixed-point lần 2 hội tụ sau 3 vòng
+09a_validation_final_warm,45223,10578,4167,34645,Chỉ giữ final warm items & session_len >= 2
+09b_test_final_warm,54245,12660,4290,41585,Chỉ giữ final warm items & session_len >= 2
