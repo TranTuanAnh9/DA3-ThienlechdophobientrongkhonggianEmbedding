@@ -81,6 +81,9 @@ evaluation:
 embedding_geometry:
   pair_sample_size_per_group: 50000
   bootstrap_iterations: 1000
+  # Notebook 08 tính nhiều tương quan hơn notebook 07; 500 vòng giữ CI ổn định
+  # ở mức phù hợp cho BTL nhưng tránh thời gian chạy tăng quá lớn.
+  final_analysis_bootstrap_iterations: 500
   confidence_level: 0.95
   tsne:
     sample_size: 8000
