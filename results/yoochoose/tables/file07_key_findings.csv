@@ -1,0 +1,6 @@
+noi_dung,ket_qua_yoochoose,doi_chieu_diginetica
+Trật tự L2 Norm theo Popularity,Rare (1.171–1.473) > Popular (0.894–1.113) >> Cold (~0.159),Lặp lại hoàn toàn quy luật trên Diginetica
+"Spearman(train_freq, norm) — Warm Only","GRU4Rec=-0.6803, SASRec=-0.6364, NARM=-0.5504 (CI 95% âm hoàn toàn)",Cả dấu âm mạnh lẫn thứ hạng |ρ| (GRU4Rec > SASRec > NARM) trùng khớp 100% với Diginetica
+Cấu trúc Category của Warm Item (12 Cat chuẩn),Warm Category Cosine Gap = 0.074–0.105 (p < 0.0001 ở cả 3 mô hình),Mô hình tự học cấu trúc category trên Yoochoose (gap nhỏ hơn Diginetica 0.41–0.44 vì Yoochoose chỉ có 12 category thô so với 945 category chi tiết)
+Vị trí Cold Item (20% Option B),Cosine Cold–Warm cùng Cat ≈ 0.0002 (gần 0); norm ≈ 0.159 và tách khỏi cụm warm trên t-SNE,Khẳng định lại giới hạn của baseline item-ID-only: không có tín hiệu học biểu diễn cho cold item
+Khoảng cách tới Tâm Category,Gap Rare − Popular = +0.089 đến +0.160,Cần kiểm tra kỹ vai trò kiểm soát frequency ở File 08 để nối với Exposure & Hit@20

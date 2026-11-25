@@ -173,19 +173,28 @@ def evaluate_top20_popularity_bias(
 
     rec_counts_series = filtered_top["item_id"].value_counts()
 
-    catalog = item_mapping[
-        [
-            "internal_item_id",
-            "item_id",
-            "category_id",
-            "internal_category_id",
-            "train_frequency",
-            "popularity_group",
-            "is_controlled_cold",
-            "is_trainable_warm",
-            "candidate_for_main_evaluation",
-        ]
-    ].copy()
+    base_cols = [
+        "internal_item_id",
+        "item_id",
+        "category_id",
+        "internal_category_id",
+        "train_frequency",
+        "popularity_group",
+        "is_controlled_cold",
+        "is_trainable_warm",
+        "candidate_for_main_evaluation",
+    ]
+    optional_cols = [
+        col
+        for col in (
+            "category_source",
+            "has_regular_category",
+            "ever_special_offer",
+            "special_offer_click_share",
+        )
+        if col in item_mapping.columns
+    ]
+    catalog = item_mapping[base_cols + optional_cols].copy()
 
     catalog["rec_count"] = (
         catalog["item_id"].map(rec_counts_series).fillna(0).astype(np.int64)

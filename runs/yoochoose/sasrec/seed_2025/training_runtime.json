@@ -1,0 +1,16 @@
+{
+  "dataset": "yoochoose",
+  "model": "sasrec",
+  "architecture": "SASRec",
+  "seed": 2025,
+  "device": "cuda",
+  "started_at": "2026-11-23 02:15:09",
+  "finished_at": "2026-11-23 02:19:39",
+  "epochs_ran": 12,
+  "best_epoch": 7,
+  "total_train_time_sec": 267.2,
+  "total_train_time_min": 4.45,
+  "mean_epoch_time_sec": 22.26,
+  "total_seed_wall_time_sec": 270.1,
+  "total_seed_wall_time_min": 4.5
+}

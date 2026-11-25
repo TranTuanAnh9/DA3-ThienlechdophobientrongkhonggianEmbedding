@@ -16,4 +16,11 @@ __pycache__/
 # Local credentials must never enter the repository
 .kaggle/
 kaggle.json
+# Yoochoose raw & temporary data (exceeds GitHub 100MB file size limit)
+data/raw/yoochoose-clicks.dat/
+data/raw/yoochoose-buys.dat/
+data/raw/yoochoose*/
+data/interim/yoochoose/
+yoochoose_kaggle_input.zip
+
 

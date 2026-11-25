@@ -1,0 +1,35 @@
+2026-11-23 02:08:27 | INFO | ========================================================================
+2026-11-23 02:08:27 | INFO | BẮT ĐẦU HUẤN LUYỆN MÔ HÌNH SASREC | DATASET = YOOCHOOSE | SEED = 2024
+2026-11-23 02:08:27 | INFO | Thời điểm bắt đầu      : 2026-11-23 02:08:27
+2026-11-23 02:08:27 | INFO | Thiết bị chạy (Device) : cuda
+2026-11-23 02:08:27 | INFO | Thư mục lưu kết quả    : /tmp/da3_work/runs/yoochoose/sasrec/seed_2024
+2026-11-23 02:08:27 | INFO | ========================================================================
+2026-11-23 02:08:28 | INFO | Tổng số item trong bảng Embedding: 10,442 (+1 hàng padding 0) | Warm trainable: 8,326 | Controlled cold (đóng băng): 2,116
+2026-11-23 02:08:28 | INFO | Tổng số tham số mô hình: 771,648
+2026-11-23 02:08:53 | INFO | Epoch 01/30 | Loss: 5.2568 | Val Recall@20: 0.7087 | Val MRR@20: 0.3139 | Val NDCG@20: 0.4038 | Time: 22.2s [BEST]
+2026-11-23 02:09:15 | INFO | Epoch 02/30 | Loss: 4.0301 | Val Recall@20: 0.7337 | Val MRR@20: 0.3301 | Val NDCG@20: 0.4224 | Time: 21.7s [BEST]
+2026-11-23 02:09:37 | INFO | Epoch 03/30 | Loss: 3.8295 | Val Recall@20: 0.7359 | Val MRR@20: 0.3319 | Val NDCG@20: 0.4244 | Time: 21.9s [BEST]
+2026-11-23 02:09:59 | INFO | Epoch 04/30 | Loss: 3.7599 | Val Recall@20: 0.7402 | Val MRR@20: 0.3344 | Val NDCG@20: 0.4273 | Time: 21.9s [BEST]
+2026-11-23 02:10:21 | INFO | Epoch 05/30 | Loss: 3.7250 | Val Recall@20: 0.7450 | Val MRR@20: 0.3349 | Val NDCG@20: 0.4287 | Time: 22.2s [BEST]
+2026-11-23 02:10:43 | INFO | Epoch 06/30 | Loss: 3.6992 | Val Recall@20: 0.7444 | Val MRR@20: 0.3354 | Val NDCG@20: 0.4290 | Time: 22.1s [BEST]
+2026-11-23 02:11:05 | INFO | Epoch 07/30 | Loss: 3.6825 | Val Recall@20: 0.7443 | Val MRR@20: 0.3368 | Val NDCG@20: 0.4302 | Time: 21.8s [BEST]
+2026-11-23 02:11:27 | INFO | Epoch 08/30 | Loss: 3.6665 | Val Recall@20: 0.7445 | Val MRR@20: 0.3365 | Val NDCG@20: 0.4299 | Time: 22.1s 
+2026-11-23 02:11:49 | INFO | Epoch 09/30 | Loss: 3.6538 | Val Recall@20: 0.7470 | Val MRR@20: 0.3365 | Val NDCG@20: 0.4305 | Time: 21.9s 
+2026-11-23 02:12:11 | INFO | Epoch 10/30 | Loss: 3.6430 | Val Recall@20: 0.7441 | Val MRR@20: 0.3376 | Val NDCG@20: 0.4307 | Time: 21.9s [BEST]
+2026-11-23 02:12:33 | INFO | Epoch 11/30 | Loss: 3.6323 | Val Recall@20: 0.7445 | Val MRR@20: 0.3373 | Val NDCG@20: 0.4306 | Time: 21.9s 
+2026-11-23 02:12:55 | INFO | Epoch 12/30 | Loss: 3.6237 | Val Recall@20: 0.7461 | Val MRR@20: 0.3366 | Val NDCG@20: 0.4304 | Time: 22.2s 
+2026-11-23 02:13:17 | INFO | Epoch 13/30 | Loss: 3.6176 | Val Recall@20: 0.7469 | Val MRR@20: 0.3397 | Val NDCG@20: 0.4331 | Time: 22.0s [BEST]
+2026-11-23 02:13:39 | INFO | Epoch 14/30 | Loss: 3.6086 | Val Recall@20: 0.7451 | Val MRR@20: 0.3376 | Val NDCG@20: 0.4309 | Time: 22.1s 
+2026-11-23 02:14:01 | INFO | Epoch 15/30 | Loss: 3.6012 | Val Recall@20: 0.7438 | Val MRR@20: 0.3391 | Val NDCG@20: 0.4318 | Time: 21.9s 
+2026-11-23 02:14:23 | INFO | Epoch 16/30 | Loss: 3.5960 | Val Recall@20: 0.7467 | Val MRR@20: 0.3387 | Val NDCG@20: 0.4322 | Time: 22.0s 
+2026-11-23 02:14:45 | INFO | Epoch 17/30 | Loss: 3.5896 | Val Recall@20: 0.7462 | Val MRR@20: 0.3383 | Val NDCG@20: 0.4318 | Time: 22.1s 
+2026-11-23 02:15:07 | INFO | Epoch 18/30 | Loss: 3.5835 | Val Recall@20: 0.7469 | Val MRR@20: 0.3390 | Val NDCG@20: 0.4324 | Time: 22.0s 
+2026-11-23 02:15:07 | INFO | Early stopping kích hoạt tại epoch 18 (không cải thiện mrr@20 sau 5 epochs). Best epoch = 13 (0.3397).
+2026-11-23 02:15:07 | INFO | Kiểm định Option B: Độ lệch tối đa của 2,116 Controlled Cold Embeddings = 0.00000000 (Chưa huấn luyện 100%).
+2026-11-23 02:15:09 | INFO | ------------------------------------------------------------------------
+2026-11-23 02:15:09 | INFO | [THỜI GIAN TRAIN]   Epochs: 18 | Train loop: 396.2s (6.60 phút) | TB/epoch: 22.0s | Tổng cả seed: 402.4s (6.71 phút)
+2026-11-23 02:15:09 | INFO | [KẾT QUẢ TEST WARM] Recall@20: 0.7394 | MRR@20: 0.3280 | NDCG@20: 0.4220
+2026-11-23 02:15:09 | INFO | [TEST LAST-ITEM]    Recall@20: 0.7373 | MRR@20: 0.3719 | NDCG@20: 0.4558
+2026-11-23 02:15:09 | INFO | [POPULARITY BIAS]   Coverage_warm@20: 0.9329 | Gini_warm@20: 0.8828 | ARP@20: 714.18
+2026-11-23 02:15:09 | INFO | Đã xuất đầy đủ kết quả vào: /tmp/da3_work/runs/yoochoose/sasrec/seed_2024, /tmp/da3_work/results/yoochoose/item_level/sasrec_seed2024.parquet và /tmp/da3_work/results/yoochoose/tables/training_runtime_summary.csv
+2026-11-23 02:15:09 | INFO | ========================================================================

@@ -6,6 +6,8 @@ import numpy as np
 import pandas as pd
 from scipy import stats
 from sklearn.decomposition import PCA
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import log_loss
 from sklearn.manifold import TSNE
 
 
@@ -115,6 +117,14 @@ def build_item_level_analysis_table(
             "category_warm_peers": with_geometry["category_warm_peers"].astype(np.int64),
         }
     )
+    for opt_col in (
+        "category_source",
+        "has_regular_category",
+        "ever_special_offer",
+        "special_offer_click_share",
+    ):
+        if opt_col in with_geometry.columns:
+            result[opt_col] = with_geometry[opt_col].to_numpy()
     return result
 
 
@@ -250,7 +260,8 @@ def analyze_three_core_relationships(
     x_freq = np.log1p(warm["train_freq"].to_numpy(dtype=np.float64))
     x_norm = warm["embedding_norm"].to_numpy(dtype=np.float64)
 
-    # Chuẩn hóa Z-score để có thêm hệ số beta chuẩn hóa (standardized beta)
+    # Hồi quy trên thang đo gốc; sau đó quy đổi sang standardized beta để có thể
+    # so sánh công bằng giữa các mô hình có thang norm khác nhau.
     x_design = np.column_stack([np.ones_like(x_freq), x_freq, x_norm])
     coeffs, _, _, _ = np.linalg.lstsq(x_design, y_reg, rcond=None)
     y_pred = x_design @ coeffs
@@ -260,9 +271,25 @@ def analyze_three_core_relationships(
     cov_beta = mse * np.linalg.pinv(x_design.T @ x_design)
     se_beta = np.sqrt(np.clip(np.diag(cov_beta), 1e-15, None))
     t_stats = coeffs / se_beta
-    p_vals = 2.0 * (1.0 - stats.t.cdf(np.abs(t_stats), df=dof))
+    # survival function ổn định số học hơn 1 - CDF khi |t| rất lớn.
+    p_vals = 2.0 * stats.t.sf(np.abs(t_stats), df=dof)
     ss_tot = float(np.sum((y_reg - y_reg.mean()) ** 2))
     r_squared = float(1.0 - np.sum(residuals**2) / max(ss_tot, 1e-12))
+    adjusted_r_squared = float(
+        1.0 - (1.0 - r_squared) * (len(y_reg) - 1) / max(1, len(y_reg) - 3)
+    )
+    rmse = float(np.sqrt(np.mean(residuals**2)))
+
+    y_sd = float(np.std(y_reg, ddof=1))
+    freq_sd = float(np.std(x_freq, ddof=1))
+    norm_sd = float(np.std(x_norm, ddof=1))
+    freq_scale = freq_sd / max(y_sd, 1e-12)
+    norm_scale = norm_sd / max(y_sd, 1e-12)
+    freq_beta_std = float(coeffs[1] * freq_scale)
+    norm_beta_std = float(coeffs[2] * norm_scale)
+    freq_se_std = float(se_beta[1] * freq_scale)
+    norm_se_std = float(se_beta[2] * norm_scale)
+    t_critical = float(stats.t.ppf(0.975, df=dof))
 
     regression_summary = {
         "model": str(item_table["model"].iloc[0]),
@@ -273,11 +300,26 @@ def analyze_three_core_relationships(
         "log1p_freq_se": float(se_beta[1]),
         "log1p_freq_t": float(t_stats[1]),
         "log1p_freq_p": float(p_vals[1]),
+        "log1p_freq_ci95_low": float(coeffs[1] - t_critical * se_beta[1]),
+        "log1p_freq_ci95_high": float(coeffs[1] + t_critical * se_beta[1]),
+        "log1p_freq_beta1_standardized": freq_beta_std,
+        "log1p_freq_standardized_se": freq_se_std,
+        "log1p_freq_standardized_ci95_low": float(freq_beta_std - t_critical * freq_se_std),
+        "log1p_freq_standardized_ci95_high": float(freq_beta_std + t_critical * freq_se_std),
         "norm_beta2": float(coeffs[2]),
         "norm_se": float(se_beta[2]),
         "norm_t": float(t_stats[2]),
         "norm_p": float(p_vals[2]),
+        "norm_ci95_low": float(coeffs[2] - t_critical * se_beta[2]),
+        "norm_ci95_high": float(coeffs[2] + t_critical * se_beta[2]),
+        "norm_beta2_standardized": norm_beta_std,
+        "norm_standardized_se": norm_se_std,
+        "norm_standardized_ci95_low": float(norm_beta_std - t_critical * norm_se_std),
+        "norm_standardized_ci95_high": float(norm_beta_std + t_critical * norm_se_std),
         "r_squared": r_squared,
+        "adjusted_r_squared": adjusted_r_squared,
+        "rmse": rmse,
+        "zero_rec_count_share": float(np.mean(warm["rec_count"].to_numpy() == 0)),
     }
 
     return pd.DataFrame(core_rows), pd.DataFrame(bin_rows), regression_summary
@@ -432,6 +474,7 @@ def compute_tsne_sample(
     perplexity: int = 30,
     seed: int = 2024,
     n_top_categories: int = 8,
+    max_iter: int = 1000,
 ) -> pd.DataFrame:
     """
     Lấy mẫu phân tầng 5,000 - 10,000 item qua 4 nhóm (popular, medium, rare, cold)
@@ -466,7 +509,7 @@ def compute_tsne_sample(
         perplexity=perplexity,
         init="pca",
         learning_rate="auto",
-        max_iter=1000,
+        max_iter=max_iter,
         random_state=seed,
     )
     coords = tsne.fit_transform(sub_emb_input)
@@ -475,6 +518,7 @@ def compute_tsne_sample(
     sub_df["tsne_2"] = coords[:, 1]
     sub_df["tsne_perplexity"] = int(perplexity)
     sub_df["tsne_seed"] = int(seed)
+    sub_df["tsne_max_iter"] = int(max_iter)
 
     # Đánh dấu các category lớn nhất để tô màu biểu đồ t-SNE theo category dễ quan sát
     top_cats = (
@@ -488,3 +532,369 @@ def compute_tsne_sample(
     )
 
     return sub_df
+
+
+def build_query_and_item_accuracy_tables(
+    test_examples: pd.DataFrame,
+    top20: pd.DataFrame,
+    topk: int = 20,
+) -> tuple[pd.DataFrame, pd.DataFrame]:
+    """
+    Ghép mỗi truy vấn test với target thật và danh sách Top-K để tạo:
+
+    1. Bảng cấp truy vấn: target, nhóm popularity và hit@K.
+    2. Bảng cấp item: số lần làm target, số lần hit và item-level Recall@K.
+
+    ``query_id`` trong ``top20`` phải tương ứng với thứ tự dòng của
+    ``test_examples``. Hàm kiểm tra chặt số truy vấn, số recommendation trên mỗi
+    truy vấn và ``session_id`` để tránh ghép nhầm target với recommendation.
+    """
+    required_examples = {"session_id", "target_internal_item_id"}
+    required_topk = {"session_id", "query_id", "rank", "internal_item_id"}
+    missing_examples = sorted(required_examples.difference(test_examples.columns))
+    missing_topk = sorted(required_topk.difference(top20.columns))
+    if missing_examples:
+        raise ValueError(f"test_examples thiếu cột: {missing_examples}")
+    if missing_topk:
+        raise ValueError(f"top20 thiếu cột: {missing_topk}")
+
+    queries = test_examples.reset_index(drop=True).copy()
+    queries.insert(0, "query_id", np.arange(len(queries), dtype=np.int64))
+    ranked = top20.sort_values(["query_id", "rank"], kind="mergesort").reset_index(drop=True)
+
+    query_ids = ranked["query_id"].to_numpy(dtype=np.int64)
+    if len(query_ids) == 0 or query_ids.min() != 0 or query_ids.max() != len(queries) - 1:
+        raise ValueError("query_id trong top20 không phủ đúng toàn bộ test_examples.")
+    counts = ranked.groupby("query_id", sort=True).size()
+    if len(counts) != len(queries) or not bool((counts == int(topk)).all()):
+        raise ValueError(f"Mỗi query phải có đúng {topk} recommendation.")
+    if ranked.duplicated(["query_id", "internal_item_id"]).any():
+        raise ValueError("Một query chứa item recommendation bị lặp.")
+
+    ranked_sessions = ranked.groupby("query_id", sort=True)["session_id"].first().to_numpy()
+    query_sessions = queries["session_id"].to_numpy()
+    if not np.array_equal(ranked_sessions, query_sessions):
+        raise ValueError("session_id giữa top20 và test_examples không khớp theo query_id.")
+
+    targets = queries["target_internal_item_id"].to_numpy(dtype=np.int64)
+    recommended = ranked["internal_item_id"].to_numpy(dtype=np.int64)
+    row_hits = recommended == targets[query_ids]
+    hit_counts_by_query = np.bincount(
+        query_ids,
+        weights=row_hits.astype(np.int64),
+        minlength=len(queries),
+    ).astype(np.int64)
+    if int(hit_counts_by_query.max(initial=0)) > 1:
+        raise ValueError("Một target xuất hiện nhiều hơn một lần trong Top-K của cùng query.")
+    queries[f"hit@{topk}"] = hit_counts_by_query.astype(bool)
+
+    item_accuracy = (
+        queries.groupby("target_internal_item_id", sort=True)
+        .agg(
+            target_count=("query_id", "size"),
+            hit_count=(f"hit@{topk}", "sum"),
+        )
+        .reset_index()
+        .rename(columns={"target_internal_item_id": "internal_item_id"})
+    )
+    item_accuracy["target_count"] = item_accuracy["target_count"].astype(np.int64)
+    item_accuracy["hit_count"] = item_accuracy["hit_count"].astype(np.int64)
+    item_accuracy[f"item_recall@{topk}"] = (
+        item_accuracy["hit_count"] / item_accuracy["target_count"]
+    )
+    return queries, item_accuracy
+
+
+def attach_item_accuracy(
+    item_table: pd.DataFrame,
+    item_accuracy: pd.DataFrame,
+    topk: int = 20,
+) -> pd.DataFrame:
+    """Ghép target/hit cấp item vào bảng geometry–exposure hiện có."""
+    if item_table["internal_item_id"].duplicated().any():
+        raise ValueError("item_table có internal_item_id bị trùng.")
+    if item_accuracy["internal_item_id"].duplicated().any():
+        raise ValueError("item_accuracy có internal_item_id bị trùng.")
+    out = item_table.merge(item_accuracy, on="internal_item_id", how="left", validate="one_to_one")
+    out["target_count"] = out["target_count"].fillna(0).astype(np.int64)
+    out["hit_count"] = out["hit_count"].fillna(0).astype(np.int64)
+    recall_col = f"item_recall@{topk}"
+    out[recall_col] = np.where(
+        out["target_count"] > 0,
+        out["hit_count"] / out["target_count"],
+        np.nan,
+    )
+    return out
+
+
+def summarize_geometry_and_outcomes_by_group(
+    item_table: pd.DataFrame,
+    topk: int = 20,
+) -> pd.DataFrame:
+    """
+    Đặt geometry, exposure và accuracy cạnh nhau cho popular/medium/rare.
+
+    Recall theo nhóm được tính từ tổng hit / tổng target (micro average), đúng
+    cùng định nghĩa với đánh giá accuracy của notebook huấn luyện.
+    """
+    recall_col = f"item_recall@{topk}"
+    required = {
+        "model", "seed", "is_trainable_warm", "popularity_group", "train_freq",
+        "embedding_norm", "distance_to_category_centroid", "cosine_to_category_centroid",
+        "rec_count", "target_count", "hit_count", recall_col,
+    }
+    missing = sorted(required.difference(item_table.columns))
+    if missing:
+        raise ValueError(f"item_table thiếu cột để tổng hợp geometry–outcome: {missing}")
+
+    warm = item_table.loc[item_table["is_trainable_warm"]].copy()
+    total_slots = int(warm["rec_count"].sum())
+    rows: list[dict[str, Any]] = []
+    for group in ("popular", "medium", "rare"):
+        sub = warm.loc[warm["popularity_group"] == group]
+        target_count = int(sub["target_count"].sum())
+        hit_count = int(sub["hit_count"].sum())
+        rows.append({
+            "model": str(warm["model"].iloc[0]),
+            "seed": int(warm["seed"].iloc[0]),
+            "popularity_group": group,
+            "item_count": int(len(sub)),
+            "train_frequency_mean": float(sub["train_freq"].mean()),
+            "embedding_norm_mean": float(sub["embedding_norm"].mean()),
+            "centroid_distance_mean": float(sub["distance_to_category_centroid"].mean()),
+            "centroid_cosine_mean": float(sub["cosine_to_category_centroid"].mean()),
+            "recommendation_count": int(sub["rec_count"].sum()),
+            "exposure_share_pct": 100.0 * float(sub["rec_count"].sum()) / max(total_slots, 1),
+            "within_group_coverage_pct": 100.0 * float((sub["rec_count"] > 0).mean()),
+            "target_count": target_count,
+            "hit_count": hit_count,
+            f"recall@{topk}": float(hit_count / target_count) if target_count else np.nan,
+        })
+    return pd.DataFrame(rows)
+
+
+def compute_geometry_output_correlations(
+    item_table: pd.DataFrame,
+    topk: int = 20,
+) -> pd.DataFrame:
+    """
+    Tính Spearman giữa ba đặc trưng geometry và hai outcome:
+    recommendation count (exposure) và item-level Recall@K (accuracy).
+
+    Kết quả được tính trên toàn bộ warm catalog và riêng từng popularity group.
+    Tương quan accuracy chỉ dùng item thực sự xuất hiện làm target trong test.
+    """
+    geometry_vars = (
+        "embedding_norm",
+        "distance_to_category_centroid",
+        "cosine_to_category_centroid",
+    )
+    recall_col = f"item_recall@{topk}"
+    warm = item_table.loc[item_table["is_trainable_warm"]].copy()
+    scopes: list[tuple[str, pd.DataFrame]] = [("all_warm", warm)]
+    scopes.extend(
+        (group, warm.loc[warm["popularity_group"] == group])
+        for group in ("rare", "medium", "popular")
+    )
+
+    rows: list[dict[str, Any]] = []
+    for scope, scope_df in scopes:
+        for geometry_var in geometry_vars:
+            for outcome, require_target in (("rec_count", False), (recall_col, True)):
+                sub = scope_df.loc[scope_df["target_count"] > 0].copy() if require_target else scope_df
+                x = sub[geometry_var].to_numpy(dtype=np.float64)
+                y = sub[outcome].to_numpy(dtype=np.float64)
+                mask = np.isfinite(x) & np.isfinite(y)
+                x, y = x[mask], y[mask]
+                if len(x) < 3 or np.unique(x).size < 2 or np.unique(y).size < 2:
+                    rho, p_value = np.nan, np.nan
+                else:
+                    rho, p_value = stats.spearmanr(x, y)
+                rows.append({
+                    "model": str(warm["model"].iloc[0]),
+                    "seed": int(warm["seed"].iloc[0]),
+                    "scope": scope,
+                    "geometry_variable": geometry_var,
+                    "outcome": outcome,
+                    "n_items": int(len(x)),
+                    "rho": float(rho),
+                    "p_value": float(p_value),
+                })
+    return pd.DataFrame(rows)
+
+
+def _standardize_vector(values: np.ndarray) -> np.ndarray:
+    values = np.asarray(values, dtype=np.float64)
+    sd = float(np.std(values, ddof=1))
+    if not np.isfinite(sd) or sd <= 1e-12:
+        raise ValueError("Không thể chuẩn hóa biến có độ lệch chuẩn bằng 0.")
+    return (values - float(np.mean(values))) / sd
+
+
+def _fit_standardized_ols(y: np.ndarray, predictors: dict[str, np.ndarray]) -> dict[str, Any]:
+    names = list(predictors)
+    y_std = _standardize_vector(np.asarray(y, dtype=np.float64))
+    x_cols = [_standardize_vector(np.asarray(predictors[name], dtype=np.float64)) for name in names]
+    x_design = np.column_stack([np.ones(len(y_std)), *x_cols])
+    coeffs, _, _, _ = np.linalg.lstsq(x_design, y_std, rcond=None)
+    y_pred = x_design @ coeffs
+    residuals = y_std - y_pred
+    dof = max(1, len(y_std) - x_design.shape[1])
+    mse = float(np.sum(residuals**2) / dof)
+    cov_beta = mse * np.linalg.pinv(x_design.T @ x_design)
+    se = np.sqrt(np.clip(np.diag(cov_beta), 1e-15, None))
+    t_stats = coeffs / se
+    p_values = 2.0 * stats.t.sf(np.abs(t_stats), df=dof)
+    t_critical = float(stats.t.ppf(0.975, df=dof))
+    ss_tot = float(np.sum((y_std - y_std.mean()) ** 2))
+    r_squared = float(1.0 - np.sum(residuals**2) / max(ss_tot, 1e-12))
+    out: dict[str, Any] = {"r_squared": r_squared, "n": int(len(y_std))}
+    for idx, name in enumerate(names, start=1):
+        out[f"{name}_beta_std"] = float(coeffs[idx])
+        out[f"{name}_p_value"] = float(p_values[idx])
+        out[f"{name}_ci95_low"] = float(coeffs[idx] - t_critical * se[idx])
+        out[f"{name}_ci95_high"] = float(coeffs[idx] + t_critical * se[idx])
+    return out
+
+
+def fit_geometry_exposure_models(item_table: pd.DataFrame) -> pd.DataFrame:
+    """
+    Hồi quy exposure cấp item, luôn kiểm soát log(1 + train frequency).
+
+    Chạy các mô hình riêng cho norm, centroid distance và centroid cosine để
+    tránh diễn giải sai khi các đặc trưng geometry phụ thuộc lẫn nhau.
+    """
+    warm = item_table.loc[item_table["is_trainable_warm"]].copy()
+    y = np.log1p(warm["rec_count"].to_numpy(dtype=np.float64))
+    freq = np.log1p(warm["train_freq"].to_numpy(dtype=np.float64))
+    geometry_vars = (
+        "embedding_norm",
+        "distance_to_category_centroid",
+        "cosine_to_category_centroid",
+    )
+    baseline = _fit_standardized_ols(y, {"log1p_train_frequency": freq})
+    rows = [{
+        "model": str(warm["model"].iloc[0]),
+        "seed": int(warm["seed"].iloc[0]),
+        "model_spec": "frequency_only",
+        "geometry_variable": "none",
+        "frequency_beta_std": baseline["log1p_train_frequency_beta_std"],
+        "geometry_beta_std": np.nan,
+        "geometry_p_value": np.nan,
+        "geometry_ci95_low": np.nan,
+        "geometry_ci95_high": np.nan,
+        "r_squared": baseline["r_squared"],
+        "delta_r_squared_vs_frequency": 0.0,
+        "n_items": baseline["n"],
+    }]
+    for geometry_var in geometry_vars:
+        fit = _fit_standardized_ols(
+            y,
+            {
+                "log1p_train_frequency": freq,
+                geometry_var: warm[geometry_var].to_numpy(dtype=np.float64),
+            },
+        )
+        rows.append({
+            "model": str(warm["model"].iloc[0]),
+            "seed": int(warm["seed"].iloc[0]),
+            "model_spec": f"frequency_plus_{geometry_var}",
+            "geometry_variable": geometry_var,
+            "frequency_beta_std": fit["log1p_train_frequency_beta_std"],
+            "geometry_beta_std": fit[f"{geometry_var}_beta_std"],
+            "geometry_p_value": fit[f"{geometry_var}_p_value"],
+            "geometry_ci95_low": fit[f"{geometry_var}_ci95_low"],
+            "geometry_ci95_high": fit[f"{geometry_var}_ci95_high"],
+            "r_squared": fit["r_squared"],
+            "delta_r_squared_vs_frequency": fit["r_squared"] - baseline["r_squared"],
+            "n_items": fit["n"],
+        })
+    return pd.DataFrame(rows)
+
+
+def fit_geometry_accuracy_models(
+    query_table: pd.DataFrame,
+    item_table: pd.DataFrame,
+    topk: int = 20,
+    random_state: int = 2024,
+) -> pd.DataFrame:
+    """
+    Logistic regression cấp truy vấn cho xác suất hit@K.
+
+    Mỗi mô hình mở rộng thêm đúng một biến geometry bên cạnh train frequency.
+    Hệ số là standardized log-odds; ``delta_log_loss_vs_frequency`` dương nghĩa
+    là biến geometry cải thiện dự đoán hit so với mô hình chỉ có frequency.
+    """
+    feature_cols = [
+        "internal_item_id", "train_freq", "embedding_norm",
+        "distance_to_category_centroid", "cosine_to_category_centroid",
+    ]
+    feature_table = item_table.loc[item_table["is_trainable_warm"], feature_cols].copy()
+    queries = query_table.merge(
+        feature_table,
+        left_on="target_internal_item_id",
+        right_on="internal_item_id",
+        how="left",
+        validate="many_to_one",
+    )
+    if queries[feature_cols[1:]].isna().any().any():
+        raise ValueError("Không ghép được geometry cho một số warm target query.")
+    y = queries[f"hit@{topk}"].astype(int).to_numpy()
+    if np.unique(y).size != 2:
+        raise ValueError("Biến hit phải chứa cả 0 và 1 để chạy logistic regression.")
+
+    freq = _standardize_vector(np.log1p(queries["train_freq"].to_numpy(dtype=np.float64)))
+    geometry_vars = (
+        "embedding_norm",
+        "distance_to_category_centroid",
+        "cosine_to_category_centroid",
+    )
+    null_prob = float(np.mean(y))
+    null_predictions = np.full(len(y), null_prob, dtype=np.float64)
+    null_log_loss = float(log_loss(y, null_predictions, labels=[0, 1]))
+
+    def fit_logistic(columns: list[np.ndarray]) -> tuple[np.ndarray, float, float]:
+        x = np.column_stack(columns)
+        estimator = LogisticRegression(
+            C=1e6,
+            solver="lbfgs",
+            max_iter=2000,
+            random_state=int(random_state),
+        )
+        estimator.fit(x, y)
+        probabilities = estimator.predict_proba(x)[:, 1]
+        model_log_loss = float(log_loss(y, probabilities, labels=[0, 1]))
+        mcfadden_r2 = float(1.0 - model_log_loss / max(null_log_loss, 1e-12))
+        return estimator.coef_[0].astype(np.float64), model_log_loss, mcfadden_r2
+
+    baseline_coef, baseline_loss, baseline_r2 = fit_logistic([freq])
+    rows = [{
+        "model": str(item_table["model"].iloc[0]),
+        "seed": int(item_table["seed"].iloc[0]),
+        "model_spec": "frequency_only",
+        "geometry_variable": "none",
+        "frequency_beta_std": float(baseline_coef[0]),
+        "geometry_beta_std": np.nan,
+        "log_loss": baseline_loss,
+        "delta_log_loss_vs_frequency": 0.0,
+        "mcfadden_r_squared": baseline_r2,
+        "delta_mcfadden_r_squared_vs_frequency": 0.0,
+        "n_queries": int(len(queries)),
+    }]
+    for geometry_var in geometry_vars:
+        geometry = _standardize_vector(queries[geometry_var].to_numpy(dtype=np.float64))
+        coeffs, model_loss, pseudo_r2 = fit_logistic([freq, geometry])
+        rows.append({
+            "model": str(item_table["model"].iloc[0]),
+            "seed": int(item_table["seed"].iloc[0]),
+            "model_spec": f"frequency_plus_{geometry_var}",
+            "geometry_variable": geometry_var,
+            "frequency_beta_std": float(coeffs[0]),
+            "geometry_beta_std": float(coeffs[1]),
+            "log_loss": model_loss,
+            "delta_log_loss_vs_frequency": baseline_loss - model_loss,
+            "mcfadden_r_squared": pseudo_r2,
+            "delta_mcfadden_r_squared_vs_frequency": pseudo_r2 - baseline_r2,
+            "n_queries": int(len(queries)),
+        })
+    return pd.DataFrame(rows)

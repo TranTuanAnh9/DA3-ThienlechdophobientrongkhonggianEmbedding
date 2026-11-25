@@ -1,0 +1,16 @@
+{
+  "dataset": "yoochoose",
+  "model": "narm",
+  "architecture": "NARM",
+  "seed": 2025,
+  "device": "cuda",
+  "started_at": "2026-11-23 02:04:17",
+  "finished_at": "2026-11-23 02:10:03",
+  "epochs_ran": 23,
+  "best_epoch": 18,
+  "total_train_time_sec": 342.78,
+  "total_train_time_min": 5.71,
+  "mean_epoch_time_sec": 14.89,
+  "total_seed_wall_time_sec": 345.36,
+  "total_seed_wall_time_min": 5.76
+}

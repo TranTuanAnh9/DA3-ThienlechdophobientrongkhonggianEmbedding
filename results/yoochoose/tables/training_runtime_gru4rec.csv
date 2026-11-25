@@ -1,0 +1,3 @@
+dataset,model,architecture,seed,device,started_at,finished_at,epochs_ran,best_epoch,total_train_time_sec,total_train_time_min,mean_epoch_time_sec,total_seed_wall_time_sec,total_seed_wall_time_min
+yoochoose,gru4rec,GRU4Rec,2024,cuda,2026-11-23 01:50:02,2026-11-23 01:55:14,30,26,305.44,5.09,10.17,311.34,5.19
+yoochoose,gru4rec,GRU4Rec,2025,cuda,2026-11-23 01:55:14,2026-11-23 01:59:51,27,22,274.42,4.57,10.15,276.87,4.61

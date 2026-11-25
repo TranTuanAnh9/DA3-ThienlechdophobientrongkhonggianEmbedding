@@ -1,0 +1,8 @@
+khia_canh,ket_qua_yoochoose,doi_chieu_diginetica
+Accuracy tốt nhất (Recall/MRR/NDCG@20),"SASREC (Recall@20=0.7405, MRR@20=0.3281)",Trùng khớp 100% thứ hạng với Diginetica
+Popularity Bias mạnh nhất (Gini/ARP/Pop Exp),"GRU4REC (Gini=0.8905, ARP=776.2, Pop Exp=89.18%)","Khác nhẹ Diginetica (NARM cao nhất về Gini), nhưng khoảng cách GRU4Rec/NARM đều rõ hơn SASRec"
+Popularity Bias thấp nhất & Coverage cao nhất,"SASREC (Gini=0.8836, Cov=92.90%, Rare Exp=1.36%)",SASRec đạt trade-off Accuracy–Diversity tốt nhất trên cả Diginetica và Yoochoose
+Khuếch đại Popular & bóp nghẹt Rare,"Popular (20.23% catalog, 83.78% train) nhận ~88–89% exposure; Rare (23.38% catalog, 2.00% train) chỉ nhận ~1.1–1.4%",Mức độ bất bình đẳng đầu ra trên Yoochoose dữ dội hơn rõ rệt so với Diginetica (62–64% vs 4–5%)
+Bất lợi kép của nhóm Rare Target,Recall@20 nhóm Popular cao hơn nhóm Rare tới 30.3–35.0 điểm %,Giống Diginetica: item hiếm vừa khó dự đoán đúng vừa nhận cực ít lượt hiển thị
+Hiệu ứng đặc thù Special Offer ('S'),Nhóm item 'S' (~7.3% warm catalog) chiếm tỷ trọng lớn exposure Top-20 và có hệ số khuếch đại > 1,Là nguồn cấu trúc chính đẩy Gini và ARP trên Yoochoose lên rất cao
+Độ ổn định qua 2 random seed (2024 & 2025),Thứ hạng SASRec > NARM > GRU4Rec theo cả Accuracy lẫn giảm Gini/ARP giữ nguyên ở cả 2 seed,Kết luận không phải nhiễu ngẫu nhiên từ một lần khởi tạo

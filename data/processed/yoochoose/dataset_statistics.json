@@ -1,0 +1,67 @@
+{
+  "dataset": "yoochoose",
+  "subset_fraction": "1/32",
+  "subset_start_utc": "2014-09-22 12:42:33.836000+00:00",
+  "data_end_utc": "2014-09-30 02:59:59.430000+00:00",
+  "validation_start_utc": "2014-09-28 02:59:59.430000+00:00",
+  "test_start_utc": "2014-09-29 02:59:59.430000+00:00",
+  "min_session_length": 2,
+  "min_item_frequency": 5,
+  "controlled_cold_ratio_requested": 0.2,
+  "controlled_cold_ratio_actual": 0.19996219996219997,
+  "controlled_cold_seed": 2024,
+  "rare_frequency_max": 7,
+  "popular_frequency_min": 42,
+  "model_catalog_size": 10442,
+  "warm_catalog_size": 8326,
+  "controlled_cold_size": 2116,
+  "regular_1_12_item_share_pct": 88.02911319670561,
+  "special_offer_item_share_pct": 7.307029304730895,
+  "final_splits": [
+    {
+      "stage": "train",
+      "events": 570955,
+      "sessions": 150666,
+      "items": 8326,
+      "categories": 15,
+      "prefix_target_examples": 420289
+    },
+    {
+      "stage": "validation_warm",
+      "events": 45223,
+      "sessions": 10578,
+      "items": 4167,
+      "categories": 14,
+      "prefix_target_examples": 34645
+    },
+    {
+      "stage": "test_warm",
+      "events": 54245,
+      "sessions": 12660,
+      "items": 4290,
+      "categories": 15,
+      "prefix_target_examples": 41585
+    }
+  ],
+  "examples": [
+    {
+      "split": "train",
+      "sessions": 150666,
+      "all_prefix_examples": 420289,
+      "last_item_examples": 150666
+    },
+    {
+      "split": "validation",
+      "sessions": 10578,
+      "all_prefix_examples": 34645,
+      "last_item_examples": 10578
+    },
+    {
+      "split": "test",
+      "sessions": 12660,
+      "all_prefix_examples": 41585,
+      "last_item_examples": 12660
+    }
+  ],
+  "audit_passed": true
+}

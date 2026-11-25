@@ -1,0 +1,6 @@
+chi_tieu,gia_tri,ham_y
+Phiên độ dài = 1,"1,259,711 (13.62%)",Thấp hơn Diginetica (29.23%); loại bỏ trước khi chia split
+Click lặp item liên tiếp,"4,032,400 (12.22%)",Giữ click lặp khác timestamp để bảo toàn hành vi quay lại
+Phiên đi qua nửa đêm UTC,"6,078 (0.07%)",Gán nguyên phiên theo timestamp cuối phiên để không cắt phiên
+Độ dài phiên (median / p75 / p90 / p99 / max),2 / 4 / 7 / 18 / 200,max_seq_length = 50 bao phủ >99.9% phiên
+Thời lượng phiên (phút: median / p90 / p99),2.13 / 16.55 / 58.84,"Hành vi phiên ngắn, tập trung"

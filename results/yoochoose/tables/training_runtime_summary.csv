@@ -1,0 +1,7 @@
+dataset,model,architecture,seed,device,started_at,finished_at,epochs_ran,best_epoch,total_train_time_sec,total_train_time_min,mean_epoch_time_sec,total_seed_wall_time_sec,total_seed_wall_time_min
+yoochoose,gru4rec,GRU4Rec,2024,cuda,2026-11-23 01:50:02,2026-11-23 01:55:14,30,26,305.44,5.09,10.17,311.34,5.19
+yoochoose,gru4rec,GRU4Rec,2025,cuda,2026-11-23 01:55:14,2026-11-23 01:59:51,27,22,274.42,4.57,10.15,276.87,4.61
+yoochoose,narm,NARM,2024,cuda,2026-11-23 01:56:49,2026-11-23 02:04:17,30,30,445.56,7.43,14.84,448.21,7.47
+yoochoose,narm,NARM,2025,cuda,2026-11-23 02:04:17,2026-11-23 02:10:03,23,18,342.78,5.71,14.89,345.36,5.76
+yoochoose,sasrec,SASRec,2024,cuda,2026-11-23 02:08:27,2026-11-23 02:15:09,18,13,396.18,6.6,22.0,402.4,6.71
+yoochoose,sasrec,SASRec,2025,cuda,2026-11-23 02:15:09,2026-11-23 02:19:39,12,7,267.2,4.45,22.26,270.1,4.5

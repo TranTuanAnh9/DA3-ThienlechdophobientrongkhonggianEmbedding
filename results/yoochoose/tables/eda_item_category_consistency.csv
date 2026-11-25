@@ -1,0 +1,7 @@
+chi_tieu,so_item,ty_le_pct
+Item có ít nhất 1 click non-0,42857,81.26244335311628
+Item có category chuẩn 1..12,42471,80.53053717362863
+Item có nhãn S (Special Offer),2984,5.658051916039364
+Item S đồng thời có category chuẩn 1..12,2845,95.34182305630027
+Item brand đồng thời có category chuẩn 1..12,6977,96.35409473829581
+Item có đúng 1 category 1..12 duy nhất (trong số có 1..12),39493,92.98815662452026

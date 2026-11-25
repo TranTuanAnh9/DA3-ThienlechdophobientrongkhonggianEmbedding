@@ -1,0 +1,8 @@
+phat_hien_eda,quy_tac_tien_xu_ly_nb02
+"Tháng 04–05 thiếu 100% category='0', tháng 06 thiếu 78.4%; tháng 07–09 đạt ~95–96% non-zero",Dùng lát cắt gần nhất Yoochoose 1/32 (2014-09-22..30): vừa sạch category vừa cho ~420k train examples & ~41k test queries tương đương Diginetica
+"0 phiên bị cắt đoạn, 0 đảo thứ tự timestamp; có 1.117 cặp trùng ms và 68 bản ghi trùng tuyệt đối","Sắp xếp ổn định (session_id, ts_ms, row_order); loại trùng tuyệt đối (session, ts, item); giữ click lặp khác timestamp"
+13.62% phiên chỉ có 1 click,Lọc session_length >= 2 trước khi chia tập và lọc fixed-point trên Train với min_item_frequency = 5
+Dữ liệu kết thúc lúc 2014-09-30 02:59:59Z (tạo mẩu 3h nếu cắt theo lịch UTC),"Chia temporal split theo cửa sổ 24 giờ neo vào max_ts (1 ngày validation + 1 ngày test cuối), gán nguyên phiên theo timestamp cuối"
+>95% item 'S' và >96% item 'brand' đều có category chuẩn 1..12; 93% item có đúng 1 category chuẩn,Phân giải category chỉ từ Train: ưu tiên mode(1..12) > S_only(13) > brand_only(14) > unknown(0); lưu cờ has_regular_category & ever_special_offer
+Raw Gini = 0.899 (lệch mạnh hơn Diginetica 0.726); 5.7% item 'S' chiếm 55–66% click cuối chuỗi,Áp dụng Controlled Cold-start 20% phân tầng theo category (seed=2024) + chia rare/medium/popular chỉ từ final train
+yoochoose-buys.dat chỉ chiếm 5.5% phiên và là conversion,Chỉ dùng yoochoose-clicks.dat để tạo chuỗi huấn luyện/đánh giá next-click công bằng với Diginetica

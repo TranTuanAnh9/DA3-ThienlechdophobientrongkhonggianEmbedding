@@ -1,0 +1,75 @@
+{
+  "dataset": "yoochoose",
+  "raw_clicks_file": "data/raw/yoochoose-clicks.dat/yoochoose-clicks.dat",
+  "raw_buys_file": "data/raw/yoochoose-buys.dat/yoochoose-buys.dat",
+  "interim_dir": "data/interim/yoochoose",
+  "processed_dir": "data/processed/yoochoose",
+  "results_dir": "results/yoochoose",
+  "subsetting": {
+    "strategy": "recent_session_fraction",
+    "fraction_denominator": 32,
+    "use_buys_in_sequences": false
+  },
+  "ordering": {
+    "within_session": [
+      "timestamp_ms",
+      "row_order"
+    ],
+    "drop_exact_duplicate_events": true,
+    "keep_repeated_clicks": true,
+    "split_session_by": "session_last_ts_ms"
+  },
+  "filtering": {
+    "min_session_length": 2,
+    "min_item_frequency": 5,
+    "fixed_point": true
+  },
+  "temporal_split": {
+    "strategy": "last_n_24h_windows_from_max_ts",
+    "validation_days": 1,
+    "test_days": 1
+  },
+  "category_resolution": {
+    "source": "pre_holdout_filtered_train_only",
+    "regular_category_ids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "special_offer_only_code": 13,
+    "brand_only_code": 14,
+    "unknown_code": 0
+  },
+  "cold_start": {
+    "protocol": "controlled_item_holdout_option_b",
+    "ratio": 0.2,
+    "unit": "item",
+    "stratify_by": "category",
+    "seed": 2024,
+    "denominator": "pre_holdout_filtered_train_catalog",
+    "keep_in_item_mapping": true,
+    "usage": "visualization_only",
+    "exclude_from_main_warm_evaluation": true,
+    "require_one_warm_item_per_category": true,
+    "min_pre_holdout_items_per_category": 5
+  },
+  "popularity_groups": {
+    "source": "final_train_frequency_only",
+    "method": "tie_aware_item_frequency_quantiles",
+    "rare_quantile": 0.2,
+    "popular_quantile": 0.8
+  },
+  "exports": {
+    "parquet_compression": "zstd",
+    "padding_internal_item_id": 0
+  }
+}
