@@ -1,0 +1,15 @@
+{
+  "mapping_contiguous_ids_1_to_N": true,
+  "mapping_raw_ids_unique": true,
+  "warm_items": 29936,
+  "cold_items": 7647,
+  "train_events": 649632,
+  "train_examples": 498849,
+  "frequency_mismatched_items": 0,
+  "frequency_max_abs_error": 0,
+  "train_event_sum_matches_frequency_sum": true,
+  "warm_items_with_zero_frequency": 0,
+  "cold_items_with_positive_frequency": 0,
+  "training_targets_cold_or_pad": 0,
+  "training_input_cold_or_pad": 0
+}

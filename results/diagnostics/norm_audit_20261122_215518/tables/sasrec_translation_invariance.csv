@@ -1,0 +1,2 @@
+model,seed,queries,transformation,hidden_max_abs_error,row_shift_logit_residual_max_abs,top20_identical_queries,top20_identical_fraction,original_rho,translated_rho,checkpoint_modified
+sasrec,2024,256,center warm E; add same center to positional embeddings,1.9073486328125e-06,8.106231689453125e-06,256,1.0,-0.7114405377185523,-0.3212684432434426,False

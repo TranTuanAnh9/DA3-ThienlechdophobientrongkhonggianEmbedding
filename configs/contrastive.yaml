@@ -1,0 +1,17 @@
+# Same training budget/selection for all three methods. No promised gain.
+methods: [baseline, uniform, head]
+seeds: [2024, 2025]
+training:
+  epochs: 15
+  patience: 4
+  train_batch_size: 512
+  eval_batch_size: 512
+  learning_rate: 0.001
+  use_amp: false
+contrastive:
+  weight: 0.15
+  temperature: 0.10
+  mask_prob_head: 0.40
+  mask_prob_other: 0.10
+  mask_prob_uniform: null # Match expected deletions from TRAIN frequencies.
+  exclude_same_session_negatives: true

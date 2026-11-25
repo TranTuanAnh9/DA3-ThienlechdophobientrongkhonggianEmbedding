@@ -1,0 +1,26 @@
+{
+  "selected_on": "selection sessions only",
+  "confirmation_seen_during_selection": false,
+  "policies": [
+    {
+      "method": "direction",
+      "coefficient": 0.1,
+      "nonzero_selection_passed": true
+    },
+    {
+      "method": "constant_direction",
+      "coefficient": 0.1,
+      "nonzero_selection_passed": true
+    },
+    {
+      "method": "matched_random",
+      "coefficient": 0.0,
+      "nonzero_selection_passed": false
+    },
+    {
+      "method": "popularity",
+      "coefficient": 0.1,
+      "nonzero_selection_passed": true
+    }
+  ]
+}

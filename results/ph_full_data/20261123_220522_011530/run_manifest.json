@@ -1,0 +1,24 @@
+{
+  "run_full_training": true,
+  "models": [
+    "gru4rec"
+  ],
+  "methods": [
+    "ph_h0_h1",
+    "baseline",
+    "cosine"
+  ],
+  "seeds": [
+    2024,
+    2025
+  ],
+  "output": "/kaggle/working/ph_full_data/results/ph_full_data/20261123_220522_011530",
+  "data_sha256": {
+    "item_mapping.csv": "7ef8636a4e74c9471f0e2d9805ae5b5c3fe3186dcb5e094f6fd2a86d75097f4a",
+    "train_examples.parquet": "eb41c516b26ea163ce6d9cceefd6b6817d6c897f49dcc23d4ab0136d69225d04",
+    "validation_examples.parquet": "52cc7af596b5b708162781b9f24267bf49c4a0fd5e43f3d5c8df9302639e194c",
+    "test_examples.parquet": "54b5014dbfbb8a43507b06655421bca92930e8563aad41295cb6deaa37260668"
+  },
+  "technical_checks_passed": true,
+  "full_results_ready": true
+}

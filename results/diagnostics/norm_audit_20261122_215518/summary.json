@@ -1,0 +1,22 @@
+{
+  "measured_sign": "negative on warm items for all six original checkpoints",
+  "measurement_errors_found": 0,
+  "checked": [
+    "train-frequency reconstruction",
+    "internal/raw ID correspondence",
+    "padding offset",
+    "exported NPY vs checkpoint",
+    "per-item table norms",
+    "independent Spearman ranks",
+    "warm/cold separation",
+    "target vs event frequency",
+    "checkpoint file hashes"
+  ],
+  "initialization": "near-zero warm correlation in seed-matched initialized replicas; cold rows agree with checkpoints within float32 roundoff",
+  "explanation_supported_by_measurements": "rare items have a more negative projection on mean train-session direction, contributing to larger norms while lowering mean logits; raw norms also depend on coordinate origin",
+  "scope_limit": "one gradient batch and cross-sectional decomposition do not prove the complete Adam training dynamics",
+  "sasrec_centering_invariance_queries": 256,
+  "sasrec_centering_invariance_identical_top20": 256,
+  "prior_bootstrap_note": "The existing helper bootstraps precomputed ranks as an approximation; this audit verifies the exact original Spearman point estimates, not those old CI endpoints.",
+  "no_model_or_slide_files_modified": true
+}

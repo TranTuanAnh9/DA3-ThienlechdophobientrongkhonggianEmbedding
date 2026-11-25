@@ -1,0 +1,15 @@
+{
+  "id": "ngytfd/persistent-homology-full-data-sbr",
+  "title": "Persistent Homology Full Data SBR",
+  "code_file": "ph-full-data.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_internet": false,
+  "dataset_sources": [
+    "ngytfd/btl-k03-sasrec-data"
+  ],
+  "competition_sources": [],
+  "kernel_sources": []
+}

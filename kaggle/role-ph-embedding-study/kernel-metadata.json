@@ -1,0 +1,17 @@
+{
+  "id": "ldnghiu/btl-k03-roleph-embedding-study",
+  "title": "Btl K03 Roleph Embedding Study",
+  "code_file": "ph-embedding-study.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_internet": true,
+  "machine_shape": "NvidiaTeslaT4",
+  "dataset_sources": [
+    "ngytfd/btl-k03-sasrec-data"
+  ],
+  "kernel_sources": [],
+  "competition_sources": [],
+  "model_sources": []
+}

@@ -1,0 +1,17 @@
+{
+  "id": "ngytfd/popularity-aware-contrastive-sasrec-calibration",
+  "title": "Popularity Aware Contrastive SASRec Calibration",
+  "code_file": "contrastive-sasrec.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_internet": true,
+  "machine_shape": "NvidiaTeslaT4",
+  "dataset_sources": [
+    "ngytfd/btl-k03-sasrec-data"
+  ],
+  "kernel_sources": [],
+  "competition_sources": [],
+  "model_sources": []
+}

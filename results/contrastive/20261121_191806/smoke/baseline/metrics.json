@@ -1,0 +1,134 @@
+{
+  "model": "sasrec",
+  "method": "baseline",
+  "seed": 2024,
+  "best_epoch": 1,
+  "monitor": "mrr@20",
+  "best_validation_score": 0.125,
+  "frozen_embedding_max_abs_drift": 0.0,
+  "experiment": {
+    "device": "cuda:0",
+    "amp": false,
+    "train_examples": 64,
+    "validation_examples": 64,
+    "train_limit": 64,
+    "validation_limit": 64,
+    "evaluate_test": false,
+    "cold_protocol": "frozen_and_masked",
+    "mask_semantics": "compact_item_deletion_keep_last",
+    "status": "smoke_test"
+  },
+  "output_dir": "/kaggle/working/contrastive_sasrec/results/contrastive/20261121_191806/smoke/baseline",
+  "seconds": 0.6525136190000183,
+  "validation": {
+    "ranking_by_group": [
+      {
+        "target_group": "all_warm",
+        "num_examples": 64,
+        "example_share_pct": 100.0,
+        "recall@20": 0.125,
+        "mrr@20": 0.125,
+        "ndcg@20": 0.125
+      },
+      {
+        "target_group": "popular",
+        "num_examples": 34,
+        "example_share_pct": 53.125,
+        "recall@20": 0.11764705882352941,
+        "mrr@20": 0.11764705882352941,
+        "ndcg@20": 0.11764705882352941
+      },
+      {
+        "target_group": "medium",
+        "num_examples": 24,
+        "example_share_pct": 37.5,
+        "recall@20": 0.125,
+        "mrr@20": 0.125,
+        "ndcg@20": 0.125
+      },
+      {
+        "target_group": "rare",
+        "num_examples": 6,
+        "example_share_pct": 9.375,
+        "recall@20": 0.16666666666666666,
+        "mrr@20": 0.16666666666666666,
+        "ndcg@20": 0.16666666666666666
+      }
+    ],
+    "popularity_bias": {
+      "topk": 20,
+      "num_queries": 64,
+      "total_recommendation_slots": 1280,
+      "warm_catalog_size": 29936,
+      "full_catalog_size": 37583,
+      "unique_recommended_items_warm": 1060,
+      "unique_recommended_items_full": 1060,
+      "coverage_warm@20": 0.035408872260823086,
+      "coverage_full@20": 0.028204241279301812,
+      "gini_warm@20": 0.970055180217798,
+      "gini_full@20": 0.9761480423329697,
+      "arp@20": 25.64375,
+      "arp_log1p@20": 2.7606236383952227,
+      "popular_group_exposure_share_pct": 22.890625,
+      "rare_group_exposure_share_pct": 20.859375
+    },
+    "exposure_by_group": [
+      {
+        "popularity_group": "popular",
+        "catalog_items": 6112,
+        "warm_catalog_share_pct": 20.416889363976484,
+        "train_interactions": 394016,
+        "train_interaction_share_pct": 60.65218462144722,
+        "recommended_slots": 293,
+        "exposure_share_pct": 22.890625,
+        "exposure_to_train_ratio": 0.3774080874888329,
+        "unique_items_recommended": 260,
+        "within_group_coverage_pct": 4.2539267015706805,
+        "mean_rec_count_per_item": 0.04793848167539267,
+        "median_rec_count_per_item": 0.0
+      },
+      {
+        "popularity_group": "medium",
+        "catalog_items": 16940,
+        "warm_catalog_share_pct": 56.58738642437199,
+        "train_interactions": 218091,
+        "train_interaction_share_pct": 33.571468154278115,
+        "recommended_slots": 720,
+        "exposure_share_pct": 56.25,
+        "exposure_to_train_ratio": 1.6755299393372491,
+        "unique_items_recommended": 567,
+        "within_group_coverage_pct": 3.347107438016529,
+        "mean_rec_count_per_item": 0.04250295159386069,
+        "median_rec_count_per_item": 0.0
+      },
+      {
+        "popularity_group": "rare",
+        "catalog_items": 6884,
+        "warm_catalog_share_pct": 22.995724211651524,
+        "train_interactions": 37525,
+        "train_interaction_share_pct": 5.776347224274666,
+        "recommended_slots": 267,
+        "exposure_share_pct": 20.859375,
+        "exposure_to_train_ratio": 3.6111705529646905,
+        "unique_items_recommended": 233,
+        "within_group_coverage_pct": 3.3846600813480534,
+        "mean_rec_count_per_item": 0.038785589773387565,
+        "median_rec_count_per_item": 0.0
+      },
+      {
+        "popularity_group": "cold",
+        "catalog_items": 7647,
+        "warm_catalog_share_pct": 0.0,
+        "train_interactions": 0,
+        "train_interaction_share_pct": 0.0,
+        "recommended_slots": 0,
+        "exposure_share_pct": 0.0,
+        "exposure_to_train_ratio": 0.0,
+        "unique_items_recommended": 0,
+        "within_group_coverage_pct": 0.0,
+        "mean_rec_count_per_item": 0.0,
+        "median_rec_count_per_item": 0.0
+      }
+    ]
+  }
+}

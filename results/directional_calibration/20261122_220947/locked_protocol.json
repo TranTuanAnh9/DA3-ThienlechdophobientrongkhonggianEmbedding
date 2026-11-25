@@ -1,0 +1,47 @@
+{
+  "seeds": [
+    2024,
+    2025
+  ],
+  "model": "sasrec",
+  "direction_coefficients": [
+    0.0,
+    0.025,
+    0.05,
+    0.1,
+    0.2,
+    0.4,
+    0.6,
+    1.0
+  ],
+  "popularity_coefficients": [
+    0.0,
+    0.025,
+    0.05,
+    0.1,
+    0.15,
+    0.2,
+    0.3,
+    0.4
+  ],
+  "methods": [
+    "direction",
+    "constant_direction",
+    "matched_random",
+    "popularity"
+  ],
+  "train_direction_sample": 16384,
+  "train_direction_sample_seed": 1701,
+  "validation_session_split_seed": 2024,
+  "selection_session_fraction": 0.5,
+  "max_overall_recall_drop_pp": 0.2,
+  "max_overall_mrr_drop_pp": 0.1,
+  "require_rare_recall_increase_each_seed": true,
+  "require_rare_mrr_nondecreasing_each_seed": true,
+  "bootstrap_iterations": 2000,
+  "batch_size": 256,
+  "topk": 20,
+  "test_evaluated": false,
+  "retrained": false,
+  "scope": "exploratory internal validation split; backbone checkpoint previously selected using full validation"
+}

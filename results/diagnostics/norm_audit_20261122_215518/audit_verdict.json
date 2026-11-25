@@ -1,0 +1,16 @@
+{
+  "failures": {
+    "data_frequency_error": 0,
+    "id_mapping_failures": 0,
+    "embedding_export_failures": 0,
+    "norm_table_failures_over_1e-6": 0,
+    "frequency_table_mismatches": 0,
+    "raw_id_table_mismatches": 0,
+    "nonfinite_embedding_values": 0
+  },
+  "all_six_warm_correlations_negative": true,
+  "no_checkpoint_files_modified": true,
+  "mechanistic_scope": "cross-sectional measurements, algebraic invariance and one gradient batch; not training-trajectory causality",
+  "all_cold_initializations_reproduced_within_1e-7": true,
+  "initialization_rounding_note": "SASRec differs only at float32 roundoff (<1.2e-8); GRU4Rec/NARM match exactly."
+}

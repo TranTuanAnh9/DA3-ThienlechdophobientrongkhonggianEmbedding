@@ -1,0 +1,16 @@
+{
+  "kernel": "ngytfd/popularity-aware-contrastive-sasrec-calibration",
+  "status": "COMPLETE",
+  "run_id": "20261121_191806",
+  "methods": 3,
+  "seeds": [
+    2024,
+    2025
+  ],
+  "verified_runs": 6,
+  "test_queries_per_run": 40001,
+  "rare_queries": 2610,
+  "paired_deltas_verified": 12,
+  "cold_drift": 0,
+  "conclusion": "Rare Recall improves in point estimates; rare Recall CIs cross zero for both seeds against baseline and uniform; rare MRR and coverage decline and Gini increases against baseline."
+}

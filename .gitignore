@@ -4,3 +4,16 @@ pytest/jupyter_runtime/
 pytest/ipython/
 pytest/tmp/
 
+# Runtime and generated local files
+.cache/*
+!.cache/README.md
+.pytest_cache/
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+~$*
+
+# Local credentials must never enter the repository
+.kaggle/
+kaggle.json
+

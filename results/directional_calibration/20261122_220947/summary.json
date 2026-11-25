@@ -1,0 +1,70 @@
+{
+  "checkpoint_frozen": true,
+  "test_evaluated": false,
+  "policies": [
+    {
+      "method": "direction",
+      "coefficient": 0.1,
+      "nonzero_selection_passed": true
+    },
+    {
+      "method": "constant_direction",
+      "coefficient": 0.1,
+      "nonzero_selection_passed": true
+    },
+    {
+      "method": "matched_random",
+      "coefficient": 0.0,
+      "nonzero_selection_passed": false
+    },
+    {
+      "method": "popularity",
+      "coefficient": 0.1,
+      "nonzero_selection_passed": true
+    }
+  ],
+  "validation_selection_queries": 15065,
+  "validation_confirmation_queries": 14763,
+  "confirmation_rare_queries": 934,
+  "seconds": 318.4528991000261,
+  "scope": "exploratory internal validation split; backbone checkpoint previously selected using full validation",
+  "hypothesis": "remove some score contribution along mean train-session direction; not a proven semantic/popularity disentanglement",
+  "per_query_metrics_verified": true,
+  "interpretation_scope": "exploratory internal validation confirmation; no independent test claim",
+  "output_translation_ranking_invariance_analytic_check": true,
+  "all_bootstrap_point_deltas_verified_against_paired_queries": true,
+  "confirmation_constraint_checks": [
+    {
+      "seed": 2024,
+      "method": "direction",
+      "confirmation_point_constraints_pass": true
+    },
+    {
+      "seed": 2024,
+      "method": "constant_direction",
+      "confirmation_point_constraints_pass": false
+    },
+    {
+      "seed": 2024,
+      "method": "popularity",
+      "confirmation_point_constraints_pass": true
+    },
+    {
+      "seed": 2025,
+      "method": "direction",
+      "confirmation_point_constraints_pass": true
+    },
+    {
+      "seed": 2025,
+      "method": "constant_direction",
+      "confirmation_point_constraints_pass": true
+    },
+    {
+      "seed": 2025,
+      "method": "popularity",
+      "confirmation_point_constraints_pass": true
+    }
+  ],
+  "conclusion": "Direction improves rare Recall/MRR and coverage relative to baseline on internal confirmation; it has smaller rare Recall gains than simple popularity calibration. No independent test evaluation.",
+  "random_control_note": "No nonzero random coefficient passed selection; lambda=0 fallback is not evidence of a nonzero random correction having zero effect."
+}

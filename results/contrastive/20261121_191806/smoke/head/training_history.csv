@@ -1,0 +1,2 @@
+epoch,ce_loss,contrastive_loss,validation_score,is_best,seconds,validation_recall@20,validation_mrr@20,validation_ndcg@20
+1,10.229282855987549,0.919347882270813,0.125,True,0.06434501100000034,0.125,0.125,0.125

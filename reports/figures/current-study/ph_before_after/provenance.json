@@ -1,0 +1,39 @@
+{
+  "source": "notebooks/12_persistent_homology.ipynb saved image output, cell 9",
+  "source_png_sha256": "d7c5ec56b787319a093f9c0ae399e3156f2adda9b19e3884e8f6524e3717e4d0",
+  "source_size": [
+    2160,
+    2880
+  ],
+  "crop_rectangles": {
+    "30008_before": [
+      1090,
+      125,
+      2160,
+      805
+    ],
+    "30008_after": [
+      1090,
+      810,
+      2160,
+      1490
+    ],
+    "13701_before": [
+      1090,
+      1495,
+      2160,
+      2175
+    ],
+    "13701_after": [
+      1090,
+      2180,
+      2160,
+      2880
+    ]
+  },
+  "before": "reference GRU4Rec seed2024 baseline checkpoint per notebook provenance",
+  "after": "GRU4Rec PH H0+H1 pilot seed2024 per notebook provenance",
+  "neighbor_selection": "same fixed 12 neighbor IDs per notebook recorded provenance",
+  "scope": "Two illustrative item-embedding clouds, not aggregate results or direct loss/session-cloud plots",
+  "numeric_endpoint_differences_computed": false
+}

@@ -1,0 +1,232 @@
+2026-11-23 15:31:41 | INFO | gru4rec cosine seed=2025 train=498849 validation=29828 device=cuda:1
+2026-11-23 15:31:44 | INFO | epoch=1 batch=100/975 CE=10.06470 regularizer=0.45613
+2026-11-23 15:31:46 | INFO | epoch=1 batch=200/975 CE=9.76905 regularizer=0.43522
+2026-11-23 15:31:49 | INFO | epoch=1 batch=300/975 CE=9.40775 regularizer=0.36697
+2026-11-23 15:31:51 | INFO | epoch=1 batch=400/975 CE=9.08095 regularizer=0.32251
+2026-11-23 15:31:53 | INFO | epoch=1 batch=500/975 CE=9.02159 regularizer=0.28996
+2026-11-23 15:31:56 | INFO | epoch=1 batch=600/975 CE=8.87654 regularizer=0.21251
+2026-11-23 15:31:58 | INFO | epoch=1 batch=700/975 CE=8.57839 regularizer=0.21332
+2026-11-23 15:32:01 | INFO | epoch=1 batch=800/975 CE=8.51894 regularizer=0.17736
+2026-11-23 15:32:03 | INFO | epoch=1 batch=900/975 CE=8.38259 regularizer=0.15219
+2026-11-23 15:32:05 | INFO | epoch=1 batch=975/975 CE=8.03796 regularizer=0.15158
+2026-11-23 15:32:05 | INFO | epoch=1 CE=9.13956 regularizer=0.29674 PH0=0.00000 PH1=0.00000 clouds=0.0 H1_bars=0.0 val_MRR=0.02309 time=23.9s
+2026-11-23 15:32:08 | INFO | epoch=2 batch=100/975 CE=8.01301 regularizer=0.11432
+2026-11-23 15:32:10 | INFO | epoch=2 batch=200/975 CE=7.85126 regularizer=0.10399
+2026-11-23 15:32:13 | INFO | epoch=2 batch=300/975 CE=7.68578 regularizer=0.10994
+2026-11-23 15:32:15 | INFO | epoch=2 batch=400/975 CE=7.47937 regularizer=0.11077
+2026-11-23 15:32:17 | INFO | epoch=2 batch=500/975 CE=7.20700 regularizer=0.07615
+2026-11-23 15:32:20 | INFO | epoch=2 batch=600/975 CE=7.02803 regularizer=0.08582
+2026-11-23 15:32:22 | INFO | epoch=2 batch=700/975 CE=6.99772 regularizer=0.08314
+2026-11-23 15:32:25 | INFO | epoch=2 batch=800/975 CE=6.80967 regularizer=0.06945
+2026-11-23 15:32:27 | INFO | epoch=2 batch=900/975 CE=6.48573 regularizer=0.06977
+2026-11-23 15:32:29 | INFO | epoch=2 batch=975/975 CE=6.60334 regularizer=0.05504
+2026-11-23 15:32:29 | INFO | epoch=2 CE=7.32143 regularizer=0.08482 PH0=0.00000 PH1=0.00000 clouds=0.0 H1_bars=0.0 val_MRR=0.09451 time=24.0s
+2026-11-23 15:32:32 | INFO | epoch=3 batch=100/975 CE=6.53803 regularizer=0.03556
+2026-11-23 15:32:34 | INFO | epoch=3 batch=200/975 CE=6.34437 regularizer=0.05304
+2026-11-23 15:32:37 | INFO | epoch=3 batch=300/975 CE=6.24449 regularizer=0.04550
+2026-11-23 15:32:39 | INFO | epoch=3 batch=400/975 CE=6.34139 regularizer=0.05244
+2026-11-23 15:32:42 | INFO | epoch=3 batch=500/975 CE=6.04667 regularizer=0.03103
+2026-11-23 15:32:44 | INFO | epoch=3 batch=600/975 CE=6.15778 regularizer=0.03472
+2026-11-23 15:32:47 | INFO | epoch=3 batch=700/975 CE=5.97153 regularizer=0.02461
+2026-11-23 15:32:49 | INFO | epoch=3 batch=800/975 CE=6.00773 regularizer=0.04390
+2026-11-23 15:32:51 | INFO | epoch=3 batch=900/975 CE=5.95681 regularizer=0.04958
+2026-11-23 15:32:53 | INFO | epoch=3 batch=975/975 CE=5.61684 regularizer=0.00761
+2026-11-23 15:32:54 | INFO | epoch=3 CE=6.14951 regularizer=0.03816 PH0=0.00000 PH1=0.00000 clouds=0.0 H1_bars=0.0 val_MRR=0.13126 time=24.6s
+2026-11-23 15:32:56 | INFO | epoch=4 batch=100/975 CE=5.55592 regularizer=0.03006
+2026-11-23 15:32:59 | INFO | epoch=4 batch=200/975 CE=5.77359 regularizer=0.03216
+2026-11-23 15:33:02 | INFO | epoch=4 batch=300/975 CE=5.59437 regularizer=0.02137
+2026-11-23 15:33:04 | INFO | epoch=4 batch=400/975 CE=5.58036 regularizer=0.03671
+2026-11-23 15:33:06 | INFO | epoch=4 batch=500/975 CE=5.71302 regularizer=0.04167
+2026-11-23 15:33:09 | INFO | epoch=4 batch=600/975 CE=5.76707 regularizer=0.03113
+2026-11-23 15:33:12 | INFO | epoch=4 batch=700/975 CE=5.79151 regularizer=0.03748
+2026-11-23 15:33:14 | INFO | epoch=4 batch=800/975 CE=5.77294 regularizer=0.05505
+2026-11-23 15:33:16 | INFO | epoch=4 batch=900/975 CE=5.51189 regularizer=0.04274
+2026-11-23 15:33:18 | INFO | epoch=4 batch=975/975 CE=5.20512 regularizer=0.02403
+2026-11-23 15:33:19 | INFO | epoch=4 CE=5.65696 regularizer=0.03034 PH0=0.00000 PH1=0.00000 clouds=0.0 H1_bars=0.0 val_MRR=0.15007 time=25.1s
+2026-11-23 15:33:21 | INFO | epoch=5 batch=100/975 CE=5.34676 regularizer=0.03567
+2026-11-23 15:33:24 | INFO | epoch=5 batch=200/975 CE=5.42446 regularizer=0.03112
+2026-11-23 15:33:26 | INFO | epoch=5 batch=300/975 CE=5.30115 regularizer=0.03055
+2026-11-23 15:33:29 | INFO | epoch=5 batch=400/975 CE=5.46104 regularizer=0.03081
+2026-11-23 15:33:31 | INFO | epoch=5 batch=500/975 CE=5.36577 regularizer=0.04131
+2026-11-23 15:33:33 | INFO | epoch=5 batch=600/975 CE=5.39056 regularizer=0.03412
+2026-11-23 15:33:36 | INFO | epoch=5 batch=700/975 CE=5.65139 regularizer=0.02843
+2026-11-23 15:33:38 | INFO | epoch=5 batch=800/975 CE=5.20629 regularizer=0.03272
+2026-11-23 15:33:41 | INFO | epoch=5 batch=900/975 CE=5.48804 regularizer=0.04347
+2026-11-23 15:33:43 | INFO | epoch=5 batch=975/975 CE=5.77448 regularizer=0.03805
+2026-11-23 15:33:43 | INFO | epoch=5 CE=5.37447 regularizer=0.02766 PH0=0.00000 PH1=0.00000 clouds=0.0 H1_bars=0.0 val_MRR=0.16460 time=24.4s
+2026-11-23 15:33:46 | INFO | epoch=6 batch=100/975 CE=5.11729 regularizer=0.01889
+2026-11-23 15:33:48 | INFO | epoch=6 batch=200/975 CE=5.11177 regularizer=0.02462
+2026-11-23 15:33:51 | INFO | epoch=6 batch=300/975 CE=5.13919 regularizer=0.03084
+2026-11-23 15:33:53 | INFO | epoch=6 batch=400/975 CE=5.07432 regularizer=0.02220
+2026-11-23 15:33:56 | INFO | epoch=6 batch=500/975 CE=5.32039 regularizer=0.03520
+2026-11-23 15:33:58 | INFO | epoch=6 batch=600/975 CE=5.29553 regularizer=0.03514
+2026-11-23 15:34:01 | INFO | epoch=6 batch=700/975 CE=5.19884 regularizer=0.02671
+2026-11-23 15:34:03 | INFO | epoch=6 batch=800/975 CE=5.34332 regularizer=0.02305
+2026-11-23 15:34:06 | INFO | epoch=6 batch=900/975 CE=5.29134 regularizer=0.02160
+2026-11-23 15:34:08 | INFO | epoch=6 batch=975/975 CE=5.12715 regularizer=0.04181
+2026-11-23 15:34:09 | INFO | epoch=6 CE=5.17479 regularizer=0.02634 PH0=0.00000 PH1=0.00000 clouds=0.0 H1_bars=0.0 val_MRR=0.17806 time=25.1s
+2026-11-23 15:34:11 | INFO | epoch=7 batch=100/975 CE=4.99189 regularizer=0.01264
+2026-11-23 15:34:14 | INFO | epoch=7 batch=200/975 CE=4.72153 regularizer=0.03387
+2026-11-23 15:34:16 | INFO | epoch=7 batch=300/975 CE=5.15760 regularizer=0.02680
+2026-11-23 15:34:19 | INFO | epoch=7 batch=400/975 CE=5.03860 regularizer=0.02552
+2026-11-23 15:34:21 | INFO | epoch=7 batch=500/975 CE=4.87779 regularizer=0.01904
+2026-11-23 15:34:24 | INFO | epoch=7 batch=600/975 CE=5.34917 regularizer=0.03305
+2026-11-23 15:34:26 | INFO | epoch=7 batch=700/975 CE=4.95811 regularizer=0.02151
+2026-11-23 15:34:28 | INFO | epoch=7 batch=800/975 CE=5.06520 regularizer=0.03162
+2026-11-23 15:34:31 | INFO | epoch=7 batch=900/975 CE=4.98227 regularizer=0.03671
+2026-11-23 15:34:33 | INFO | epoch=7 batch=975/975 CE=4.88397 regularizer=0.05132
+2026-11-23 15:34:34 | INFO | epoch=7 CE=5.02589 regularizer=0.02589 PH0=0.00000 PH1=0.00000 clouds=0.0 H1_bars=0.0 val_MRR=0.18343 time=25.2s
+2026-11-23 15:34:36 | INFO | epoch=8 batch=100/975 CE=4.85855 regularizer=0.02612
+2026-11-23 15:34:39 | INFO | epoch=8 batch=200/975 CE=5.01808 regularizer=0.04508
+2026-11-23 15:34:41 | INFO | epoch=8 batch=300/975 CE=4.92347 regularizer=0.02542
+2026-11-23 15:34:44 | INFO | epoch=8 batch=400/975 CE=5.02729 regularizer=0.03185
+2026-11-23 15:34:46 | INFO | epoch=8 batch=500/975 CE=4.98601 regularizer=0.02189
+2026-11-23 15:34:49 | INFO | epoch=8 batch=600/975 CE=5.00553 regularizer=0.01819
+2026-11-23 15:34:51 | INFO | epoch=8 batch=700/975 CE=4.93515 regularizer=0.02380
+2026-11-23 15:34:54 | INFO | epoch=8 batch=800/975 CE=4.95160 regularizer=0.02729
+2026-11-23 15:34:56 | INFO | epoch=8 batch=900/975 CE=4.94370 regularizer=0.04482
+2026-11-23 15:34:58 | INFO | epoch=8 batch=975/975 CE=4.79829 regularizer=0.03127
+2026-11-23 15:34:59 | INFO | epoch=8 CE=4.90153 regularizer=0.02543 PH0=0.00000 PH1=0.00000 clouds=0.0 H1_bars=0.0 val_MRR=0.18884 time=25.3s
+2026-11-23 15:35:01 | INFO | epoch=9 batch=100/975 CE=4.74812 regularizer=0.02354
+2026-11-23 15:35:04 | INFO | epoch=9 batch=200/975 CE=4.74528 regularizer=0.03102
+2026-11-23 15:35:06 | INFO | epoch=9 batch=300/975 CE=4.87946 regularizer=0.01494
+2026-11-23 15:35:09 | INFO | epoch=9 batch=400/975 CE=4.79444 regularizer=0.02319
+2026-11-23 15:35:11 | INFO | epoch=9 batch=500/975 CE=4.73746 regularizer=0.01920
+2026-11-23 15:35:14 | INFO | epoch=9 batch=600/975 CE=4.77455 regularizer=0.01473
+2026-11-23 15:35:16 | INFO | epoch=9 batch=700/975 CE=4.98933 regularizer=0.02950
+2026-11-23 15:35:18 | INFO | epoch=9 batch=800/975 CE=4.82281 regularizer=0.02413
+2026-11-23 15:35:21 | INFO | epoch=9 batch=900/975 CE=4.78800 regularizer=0.01664
+2026-11-23 15:35:23 | INFO | epoch=9 batch=975/975 CE=4.77502 regularizer=0.01797
+2026-11-23 15:35:24 | INFO | epoch=9 CE=4.80528 regularizer=0.02572 PH0=0.00000 PH1=0.00000 clouds=0.0 H1_bars=0.0 val_MRR=0.19444 time=24.6s
+2026-11-23 15:35:26 | INFO | epoch=10 batch=100/975 CE=4.57834 regularizer=0.01761
+2026-11-23 15:35:29 | INFO | epoch=10 batch=200/975 CE=4.80394 regularizer=0.03065
+2026-11-23 15:35:31 | INFO | epoch=10 batch=300/975 CE=4.60402 regularizer=0.03040
+2026-11-23 15:35:34 | INFO | epoch=10 batch=400/975 CE=4.72564 regularizer=0.02497
+2026-11-23 15:35:36 | INFO | epoch=10 batch=500/975 CE=4.76578 regularizer=0.03838
+2026-11-23 15:35:39 | INFO | epoch=10 batch=600/975 CE=4.96081 regularizer=0.03507
+2026-11-23 15:35:41 | INFO | epoch=10 batch=700/975 CE=4.73608 regularizer=0.02863
+2026-11-23 15:35:44 | INFO | epoch=10 batch=800/975 CE=5.09970 regularizer=0.03599
+2026-11-23 15:35:46 | INFO | epoch=10 batch=900/975 CE=4.69684 regularizer=0.02508
+2026-11-23 15:35:48 | INFO | epoch=10 batch=975/975 CE=4.67146 regularizer=0.02011
+2026-11-23 15:35:49 | INFO | epoch=10 CE=4.72391 regularizer=0.02590 PH0=0.00000 PH1=0.00000 clouds=0.0 H1_bars=0.0 val_MRR=0.19532 time=25.1s
+2026-11-23 15:35:51 | INFO | epoch=11 batch=100/975 CE=4.59166 regularizer=0.02197
+2026-11-23 15:35:53 | INFO | epoch=11 batch=200/975 CE=4.71233 regularizer=0.01273
+2026-11-23 15:35:56 | INFO | epoch=11 batch=300/975 CE=4.61246 regularizer=0.03151
+2026-11-23 15:35:58 | INFO | epoch=11 batch=400/975 CE=4.61339 regularizer=0.01411
+2026-11-23 15:36:01 | INFO | epoch=11 batch=500/975 CE=4.61161 regularizer=0.02921
+2026-11-23 15:36:03 | INFO | epoch=11 batch=600/975 CE=4.68855 regularizer=0.02308
+2026-11-23 15:36:06 | INFO | epoch=11 batch=700/975 CE=4.62982 regularizer=0.03532
+2026-11-23 15:36:08 | INFO | epoch=11 batch=800/975 CE=4.59692 regularizer=0.02609
+2026-11-23 15:36:11 | INFO | epoch=11 batch=900/975 CE=4.81324 regularizer=0.02606
+2026-11-23 15:36:13 | INFO | epoch=11 batch=975/975 CE=4.81720 regularizer=0.03710
+2026-11-23 15:36:14 | INFO | epoch=11 CE=4.65966 regularizer=0.02637 PH0=0.00000 PH1=0.00000 clouds=0.0 H1_bars=0.0 val_MRR=0.19747 time=25.1s
+2026-11-23 15:36:16 | INFO | epoch=12 batch=100/975 CE=4.53412 regularizer=0.02351
+2026-11-23 15:36:19 | INFO | epoch=12 batch=200/975 CE=4.34668 regularizer=0.02579
+2026-11-23 15:36:21 | INFO | epoch=12 batch=300/975 CE=4.59106 regularizer=0.02177
+2026-11-23 15:36:24 | INFO | epoch=12 batch=400/975 CE=4.61910 regularizer=0.03213
+2026-11-23 15:36:26 | INFO | epoch=12 batch=500/975 CE=4.65858 regularizer=0.03083
+2026-11-23 15:36:29 | INFO | epoch=12 batch=600/975 CE=4.71633 regularizer=0.02044
+2026-11-23 15:36:31 | INFO | epoch=12 batch=700/975 CE=4.60525 regularizer=0.02897
+2026-11-23 15:36:34 | INFO | epoch=12 batch=800/975 CE=4.68453 regularizer=0.03053
+2026-11-23 15:36:36 | INFO | epoch=12 batch=900/975 CE=4.58971 regularizer=0.03028
+2026-11-23 15:36:38 | INFO | epoch=12 batch=975/975 CE=4.63346 regularizer=0.04127
+2026-11-23 15:36:39 | INFO | epoch=12 CE=4.60350 regularizer=0.02697 PH0=0.00000 PH1=0.00000 clouds=0.0 H1_bars=0.0 val_MRR=0.19904 time=25.1s
+2026-11-23 15:36:41 | INFO | epoch=13 batch=100/975 CE=4.40087 regularizer=0.02920
+2026-11-23 15:36:44 | INFO | epoch=13 batch=200/975 CE=4.32331 regularizer=0.01838
+2026-11-23 15:36:46 | INFO | epoch=13 batch=300/975 CE=4.64147 regularizer=0.02603
+2026-11-23 15:36:48 | INFO | epoch=13 batch=400/975 CE=4.56273 regularizer=0.02121
+2026-11-23 15:36:51 | INFO | epoch=13 batch=500/975 CE=4.47629 regularizer=0.02725
+2026-11-23 15:36:53 | INFO | epoch=13 batch=600/975 CE=4.41196 regularizer=0.02609
+2026-11-23 15:36:56 | INFO | epoch=13 batch=700/975 CE=4.60732 regularizer=0.03675
+2026-11-23 15:36:58 | INFO | epoch=13 batch=800/975 CE=4.61122 regularizer=0.03147
+2026-11-23 15:37:00 | INFO | epoch=13 batch=900/975 CE=4.56863 regularizer=0.03431
+2026-11-23 15:37:02 | INFO | epoch=13 batch=975/975 CE=4.40267 regularizer=0.03935
+2026-11-23 15:37:03 | INFO | epoch=13 CE=4.54906 regularizer=0.02775 PH0=0.00000 PH1=0.00000 clouds=0.0 H1_bars=0.0 val_MRR=0.20033 time=24.1s
+2026-11-23 15:37:06 | INFO | epoch=14 batch=100/975 CE=4.40849 regularizer=0.03569
+2026-11-23 15:37:08 | INFO | epoch=14 batch=200/975 CE=4.58665 regularizer=0.02580
+2026-11-23 15:37:10 | INFO | epoch=14 batch=300/975 CE=4.51587 regularizer=0.02785
+2026-11-23 15:37:13 | INFO | epoch=14 batch=400/975 CE=4.56268 regularizer=0.02870
+2026-11-23 15:37:15 | INFO | epoch=14 batch=500/975 CE=4.45035 regularizer=0.02115
+2026-11-23 15:37:18 | INFO | epoch=14 batch=600/975 CE=4.41275 regularizer=0.02854
+2026-11-23 15:37:20 | INFO | epoch=14 batch=700/975 CE=4.63871 regularizer=0.02946
+2026-11-23 15:37:23 | INFO | epoch=14 batch=800/975 CE=4.49040 regularizer=0.03435
+2026-11-23 15:37:25 | INFO | epoch=14 batch=900/975 CE=4.81302 regularizer=0.03402
+2026-11-23 15:37:27 | INFO | epoch=14 batch=975/975 CE=4.43866 regularizer=0.02921
+2026-11-23 15:37:28 | INFO | epoch=14 CE=4.50513 regularizer=0.02881 PH0=0.00000 PH1=0.00000 clouds=0.0 H1_bars=0.0 val_MRR=0.19967 time=24.8s
+2026-11-23 15:37:30 | INFO | epoch=15 batch=100/975 CE=4.24023 regularizer=0.02076
+2026-11-23 15:37:33 | INFO | epoch=15 batch=200/975 CE=4.59927 regularizer=0.03326
+2026-11-23 15:37:35 | INFO | epoch=15 batch=300/975 CE=4.41466 regularizer=0.02818
+2026-11-23 15:37:38 | INFO | epoch=15 batch=400/975 CE=4.46635 regularizer=0.02804
+2026-11-23 15:37:40 | INFO | epoch=15 batch=500/975 CE=4.48372 regularizer=0.02236
+2026-11-23 15:37:43 | INFO | epoch=15 batch=600/975 CE=4.68044 regularizer=0.04348
+2026-11-23 15:37:45 | INFO | epoch=15 batch=700/975 CE=4.49709 regularizer=0.02195
+2026-11-23 15:37:48 | INFO | epoch=15 batch=800/975 CE=4.28212 regularizer=0.01976
+2026-11-23 15:37:50 | INFO | epoch=15 batch=900/975 CE=4.52868 regularizer=0.02336
+2026-11-23 15:37:52 | INFO | epoch=15 batch=975/975 CE=4.49910 regularizer=0.02575
+2026-11-23 15:37:53 | INFO | epoch=15 CE=4.46335 regularizer=0.02992 PH0=0.00000 PH1=0.00000 clouds=0.0 H1_bars=0.0 val_MRR=0.20124 time=25.0s
+2026-11-23 15:37:55 | INFO | epoch=16 batch=100/975 CE=4.33417 regularizer=0.02781
+2026-11-23 15:37:58 | INFO | epoch=16 batch=200/975 CE=4.32288 regularizer=0.02942
+2026-11-23 15:38:00 | INFO | epoch=16 batch=300/975 CE=4.46545 regularizer=0.03180
+2026-11-23 15:38:02 | INFO | epoch=16 batch=400/975 CE=4.56003 regularizer=0.03834
+2026-11-23 15:38:05 | INFO | epoch=16 batch=500/975 CE=4.52870 regularizer=0.02967
+2026-11-23 15:38:07 | INFO | epoch=16 batch=600/975 CE=4.32698 regularizer=0.03614
+2026-11-23 15:38:10 | INFO | epoch=16 batch=700/975 CE=4.61326 regularizer=0.03828
+2026-11-23 15:38:12 | INFO | epoch=16 batch=800/975 CE=4.52826 regularizer=0.04142
+2026-11-23 15:38:15 | INFO | epoch=16 batch=900/975 CE=4.57137 regularizer=0.03764
+2026-11-23 15:38:16 | INFO | epoch=16 batch=975/975 CE=4.45655 regularizer=0.03171
+2026-11-23 15:38:17 | INFO | epoch=16 CE=4.42277 regularizer=0.03117 PH0=0.00000 PH1=0.00000 clouds=0.0 H1_bars=0.0 val_MRR=0.20160 time=24.5s
+2026-11-23 15:38:20 | INFO | epoch=17 batch=100/975 CE=4.46131 regularizer=0.03127
+2026-11-23 15:38:22 | INFO | epoch=17 batch=200/975 CE=4.45803 regularizer=0.04071
+2026-11-23 15:38:25 | INFO | epoch=17 batch=300/975 CE=4.39384 regularizer=0.02777
+2026-11-23 15:38:27 | INFO | epoch=17 batch=400/975 CE=4.44908 regularizer=0.02922
+2026-11-23 15:38:30 | INFO | epoch=17 batch=500/975 CE=4.52894 regularizer=0.03694
+2026-11-23 15:38:32 | INFO | epoch=17 batch=600/975 CE=4.54342 regularizer=0.03668
+2026-11-23 15:38:35 | INFO | epoch=17 batch=700/975 CE=4.38501 regularizer=0.02746
+2026-11-23 15:38:37 | INFO | epoch=17 batch=800/975 CE=4.42820 regularizer=0.03956
+2026-11-23 15:38:40 | INFO | epoch=17 batch=900/975 CE=4.40539 regularizer=0.02561
+2026-11-23 15:38:41 | INFO | epoch=17 batch=975/975 CE=4.17928 regularizer=0.03528
+2026-11-23 15:38:42 | INFO | epoch=17 CE=4.38632 regularizer=0.03236 PH0=0.00000 PH1=0.00000 clouds=0.0 H1_bars=0.0 val_MRR=0.20026 time=24.8s
+2026-11-23 15:38:45 | INFO | epoch=18 batch=100/975 CE=4.06103 regularizer=0.02035
+2026-11-23 15:38:47 | INFO | epoch=18 batch=200/975 CE=4.16615 regularizer=0.02226
+2026-11-23 15:38:49 | INFO | epoch=18 batch=300/975 CE=4.31428 regularizer=0.03302
+2026-11-23 15:38:52 | INFO | epoch=18 batch=400/975 CE=4.31621 regularizer=0.03149
+2026-11-23 15:38:54 | INFO | epoch=18 batch=500/975 CE=4.39072 regularizer=0.03870
+2026-11-23 15:38:57 | INFO | epoch=18 batch=600/975 CE=4.30577 regularizer=0.03941
+2026-11-23 15:38:59 | INFO | epoch=18 batch=700/975 CE=4.30373 regularizer=0.03370
+2026-11-23 15:39:02 | INFO | epoch=18 batch=800/975 CE=4.55060 regularizer=0.02677
+2026-11-23 15:39:04 | INFO | epoch=18 batch=900/975 CE=4.45538 regularizer=0.03390
+2026-11-23 15:39:06 | INFO | epoch=18 batch=975/975 CE=4.29795 regularizer=0.04393
+2026-11-23 15:39:07 | INFO | epoch=18 CE=4.35148 regularizer=0.03405 PH0=0.00000 PH1=0.00000 clouds=0.0 H1_bars=0.0 val_MRR=0.19985 time=24.9s
+2026-11-23 15:39:10 | INFO | epoch=19 batch=100/975 CE=4.35972 regularizer=0.03285
+2026-11-23 15:39:12 | INFO | epoch=19 batch=200/975 CE=4.17236 regularizer=0.02768
+2026-11-23 15:39:14 | INFO | epoch=19 batch=300/975 CE=4.42279 regularizer=0.03774
+2026-11-23 15:39:17 | INFO | epoch=19 batch=400/975 CE=4.48746 regularizer=0.03733
+2026-11-23 15:39:19 | INFO | epoch=19 batch=500/975 CE=4.15505 regularizer=0.03283
+2026-11-23 15:39:22 | INFO | epoch=19 batch=600/975 CE=4.46648 regularizer=0.05216
+2026-11-23 15:39:24 | INFO | epoch=19 batch=700/975 CE=4.36644 regularizer=0.04525
+2026-11-23 15:39:27 | INFO | epoch=19 batch=800/975 CE=4.43971 regularizer=0.03477
+2026-11-23 15:39:29 | INFO | epoch=19 batch=900/975 CE=4.59610 regularizer=0.05158
+2026-11-23 15:39:31 | INFO | epoch=19 batch=975/975 CE=4.25405 regularizer=0.03463
+2026-11-23 15:39:31 | INFO | epoch=19 CE=4.31861 regularizer=0.03597 PH0=0.00000 PH1=0.00000 clouds=0.0 H1_bars=0.0 val_MRR=0.20022 time=24.2s
+2026-11-23 15:39:34 | INFO | epoch=20 batch=100/975 CE=4.02819 regularizer=0.03910
+2026-11-23 15:39:36 | INFO | epoch=20 batch=200/975 CE=4.24427 regularizer=0.04088
+2026-11-23 15:39:39 | INFO | epoch=20 batch=300/975 CE=4.18342 regularizer=0.03058
+2026-11-23 15:39:41 | INFO | epoch=20 batch=400/975 CE=4.37829 regularizer=0.03333
+2026-11-23 15:39:44 | INFO | epoch=20 batch=500/975 CE=4.48094 regularizer=0.04535
+2026-11-23 15:39:46 | INFO | epoch=20 batch=600/975 CE=4.62684 regularizer=0.03785
+2026-11-23 15:39:49 | INFO | epoch=20 batch=700/975 CE=4.38318 regularizer=0.03816
+2026-11-23 15:39:51 | INFO | epoch=20 batch=800/975 CE=4.48411 regularizer=0.03632
+2026-11-23 15:39:54 | INFO | epoch=20 batch=900/975 CE=4.44177 regularizer=0.03726
+2026-11-23 15:39:55 | INFO | epoch=20 batch=975/975 CE=4.37741 regularizer=0.03540
+2026-11-23 15:39:56 | INFO | epoch=20 CE=4.28822 regularizer=0.03777 PH0=0.00000 PH1=0.00000 clouds=0.0 H1_bars=0.0 val_MRR=0.20024 time=24.9s
+2026-11-23 15:39:59 | INFO | epoch=21 batch=100/975 CE=4.36950 regularizer=0.03363
+2026-11-23 15:40:01 | INFO | epoch=21 batch=200/975 CE=4.14358 regularizer=0.04225
+2026-11-23 15:40:04 | INFO | epoch=21 batch=300/975 CE=4.28547 regularizer=0.03401
+2026-11-23 15:40:06 | INFO | epoch=21 batch=400/975 CE=4.18565 regularizer=0.02985
+2026-11-23 15:40:08 | INFO | epoch=21 batch=500/975 CE=4.37326 regularizer=0.04631
+2026-11-23 15:40:11 | INFO | epoch=21 batch=600/975 CE=4.41488 regularizer=0.05908
+2026-11-23 15:40:14 | INFO | epoch=21 batch=700/975 CE=4.27469 regularizer=0.03946
+2026-11-23 15:40:16 | INFO | epoch=21 batch=800/975 CE=4.28796 regularizer=0.04192
+2026-11-23 15:40:18 | INFO | epoch=21 batch=900/975 CE=4.47004 regularizer=0.05775
+2026-11-23 15:40:20 | INFO | epoch=21 batch=975/975 CE=4.22414 regularizer=0.04652
+2026-11-23 15:40:21 | INFO | epoch=21 CE=4.25924 regularizer=0.03973 PH0=0.00000 PH1=0.00000 clouds=0.0 H1_bars=0.0 val_MRR=0.19976 time=25.0s

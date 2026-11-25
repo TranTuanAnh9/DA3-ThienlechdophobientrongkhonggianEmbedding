@@ -1,0 +1,62 @@
+{
+  "available_models": [
+    "gru4rec",
+    "narm",
+    "sasrec"
+  ],
+  "default_models": [
+    "gru4rec"
+  ],
+  "methods": [
+    "ph_h0_h1",
+    "baseline",
+    "cosine"
+  ],
+  "seeds": [
+    2024,
+    2025
+  ],
+  "training": {
+    "epochs": 30,
+    "learning_rate": 0.001,
+    "train_batch_size": 512,
+    "eval_batch_size": 1024,
+    "weight_decay": 0.0,
+    "grad_clip_norm": 5.0,
+    "use_amp": false,
+    "log_every_batches": 100
+  },
+  "early_stopping": {
+    "monitor": "mrr@20",
+    "patience": 5,
+    "min_delta": 0.0001
+  },
+  "topology_params": {
+    "neighbors": 6,
+    "max_clouds": 4,
+    "h1_weight": 1.0,
+    "lambda_topo": 0.15,
+    "lambda_anisotropy": 0.0,
+    "tail_threshold": 20,
+    "cosine_tau": 0.45,
+    "regularization_interval": 1,
+    "save_initial_embeddings": true
+  },
+  "geometry_export": {
+    "cloud_size": 12,
+    "rare_anchors": 3,
+    "medium_anchors": 1,
+    "popular_anchors": 1
+  },
+  "data_sha256": {
+    "item_mapping.csv": "7ef8636a4e74c9471f0e2d9805ae5b5c3fe3186dcb5e094f6fd2a86d75097f4a",
+    "train_examples.parquet": "eb41c516b26ea163ce6d9cceefd6b6817d6c897f49dcc23d4ab0136d69225d04",
+    "validation_examples.parquet": "52cc7af596b5b708162781b9f24267bf49c4a0fd5e43f3d5c8df9302639e194c",
+    "test_examples.parquet": "54b5014dbfbb8a43507b06655421bca92930e8563aad41295cb6deaa37260668"
+  },
+  "split_counts": {
+    "train": 498849,
+    "validation": 29828,
+    "test": 40001
+  }
+}

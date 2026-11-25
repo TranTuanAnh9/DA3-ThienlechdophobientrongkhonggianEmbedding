@@ -1,0 +1,9 @@
+{
+  "parameters_unchanged": true,
+  "state_sha256": "4dfb4d1ebe1077eb64d35afdd6d01ed922744d60f42d8c4fdddd3925c997dba0",
+  "baseline_matches_original": true,
+  "train_sample": 16384,
+  "random_penalty_train_rms_match_scale": 4.248476982116699,
+  "direction_source": "train prefixes only",
+  "test_evaluated": false
+}

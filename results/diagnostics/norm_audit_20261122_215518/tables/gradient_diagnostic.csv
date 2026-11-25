@@ -1,0 +1,4 @@
+model,seed,group,input_gradient_norm_sum,output_gradient_norm_sum,mean_first_order_SGD_norm_change_output_per_unit_lr,mean_first_order_SGD_norm_change_input_per_unit_lr,tied_gradient_reconstruction_max_abs_error,scope
+sasrec,2024,popular,6.1276092529296875,16.944000244140625,-8.66252084961161e-05,-2.816263076965697e-06,1.862645149230957e-09,single_eval_mode_train_batch; not Adam trajectory
+sasrec,2024,medium,2.9597158432006836,10.798952102661133,5.084614258521469e-07,-2.8863735224149423e-06,1.862645149230957e-09,single_eval_mode_train_batch; not Adam trajectory
+sasrec,2024,rare,0.6851871609687805,2.2118210792541504,2.4594093702035025e-05,4.65750616740479e-07,1.862645149230957e-09,single_eval_mode_train_batch; not Adam trajectory

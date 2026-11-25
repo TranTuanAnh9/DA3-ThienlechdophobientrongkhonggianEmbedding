@@ -1,0 +1,13 @@
+model,seed,method,hits,queries,recall
+gru4rec,2024,baseline,183,523,0.349904
+gru4rec,2024,role_ph,183,523,0.349904
+gru4rec,2025,baseline,178,515,0.345631
+gru4rec,2025,role_ph,178,515,0.345631
+narm,2024,baseline,178,523,0.340344
+narm,2024,role_ph,178,523,0.340344
+narm,2025,baseline,166,515,0.32233
+narm,2025,role_ph,166,515,0.32233
+sasrec,2024,baseline,198,523,0.378585
+sasrec,2024,role_ph,198,523,0.378585
+sasrec,2025,baseline,197,515,0.382524
+sasrec,2025,role_ph,197,515,0.382524

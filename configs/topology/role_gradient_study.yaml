@@ -1,0 +1,19 @@
+# Full-data successor to the local exploratory pilot; no audience/traffic task.
+models: [gru4rec, narm, sasrec]
+seeds: [2024, 2025]
+methods: [baseline, role_input_scale, role_tangent, ph_h0_h1, role_ph]
+epochs: 30
+topology_params:
+  neighbors: 6
+  max_clouds: 4
+  h1_weight: 1.0
+  lambda_topo: 0.15
+  lambda_anisotropy: 0.0
+  tail_threshold: 20
+  cosine_tau: 0.45
+  gradient_strength: 0.5
+  regularization_interval: 1
+primary_outcome: rare_recall@20
+guardrail: overall_recall_drop_at_most_0.005
+selection: validation_mrr@20
+scope: tied_embedding_gradient_roles_and_persistent_homology

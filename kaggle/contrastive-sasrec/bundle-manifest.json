@@ -1,0 +1,32 @@
+{
+  "files": {
+    "BTL-K03-tong-quan-de-tai.md": "b161833f48be34b1aa6046e639ada203b582e7ef22eace81d05aebd25237736e",
+    "configs/common.yaml": "ba75c9c69ec0c04dfb3a170a97f8b3fa2557fb81c8e17c1328b1de2a60e8dab0",
+    "configs/data.yaml": "b2886a690f04904ebf03f4151a14e6049ee4983e1a8dcdd91891c9926b0da822",
+    "configs/sasrec.yaml": "05a1fb86d68b3c511391072cfaef86ad8f7e7d779b8abe7973dae59d20a20947",
+    "configs/contrastive.yaml": "98fa723080e04897eced325fe619838122a65684198cb8b49dea73f64203cf6b",
+    "src/btl_k03/artifacts.py": "cef9a1b1db663223bc01fe8c27579e00c381da65b5031f4827ddb3cc34fa88e9",
+    "src/btl_k03/contrastive.py": "09d9e906774b72ebe11763cc8654f8d227749e7d673fdbc2a0fc653dcecdf5fc",
+    "src/btl_k03/embedding_analysis.py": "1f8dcc40101c80deac7ef911770e3c07fd935411e9f3508a55f5cef2678518a1",
+    "src/btl_k03/models.py": "421cf33af14461590b16986f8d8cb5a34a48e306c2aeb61a76ad77fd91c16cdc",
+    "src/btl_k03/paths.py": "c65f3a8af27cea5476bdd8b8030102383d40d394147697cef333a6541aea2da8",
+    "src/btl_k03/popularity_metrics.py": "f03989a55f423bb8df0dfb2acdc4dd16e7afd79bdeb207c699bd59c987afd381",
+    "src/btl_k03/score_calibration.py": "439f79fa333116c6ce86cda0df725bb5a818854497b2413b5df8969113905a52",
+    "src/btl_k03/statistics.py": "4f7d3cf70a113adfc4bee28ef362cf3ee9cfa9de2b971aa892c889b189d3dc0c",
+    "src/btl_k03/utils.py": "4be72719efc2b92b7d14f345defdb4bef2128f38a56b4da1a99e9719ff84b191",
+    "src/btl_k03/__init__.py": "c200af8783d5148a2715e25a8fc3f19cab0c1f7e32780f57366d3d10486007d4",
+    "src/btl_k03/topology/persistence_loss.py": "0a70ec9ddce183cc961e5cdf9d09eec4673f661332b598dededfe7ccf6456e77",
+    "src/btl_k03/topology/persistent_homology.py": "41facbd8b7ec101f01778c3c1299e329a97296a20cfc519cbf4b620108399d08",
+    "src/btl_k03/topology/role_gradients.py": "04fecab21e174fa499e43f9b581341ae90a75ddfdffad0eec1e7f9a53f5a5440",
+    "src/btl_k03/topology/topo_eval.py": "8399064e0980f732c07d771ff3e0700372ce13b5cf7af456f1102b248c2a9fde",
+    "src/btl_k03/topology/topo_trainer.py": "3d8da1dfd564a0f1f31bbd5f926c4c7f3b5ce1045799b2cf29767b840485b3c4",
+    "src/btl_k03/topology/__init__.py": "7f3452f47ee6339ca8911bcbb97bf65b523df6bdc7cf2468949240692df9c69b"
+  },
+  "data_hashes": {
+    "item_mapping.csv": "7ef8636a4e74c9471f0e2d9805ae5b5c3fe3186dcb5e094f6fd2a86d75097f4a",
+    "train_examples.parquet": "eb41c516b26ea163ce6d9cceefd6b6817d6c897f49dcc23d4ab0136d69225d04",
+    "validation_examples.parquet": "52cc7af596b5b708162781b9f24267bf49c4a0fd5e43f3d5c8df9302639e194c",
+    "test_examples.parquet": "54b5014dbfbb8a43507b06655421bca92930e8563aad41295cb6deaa37260668"
+  },
+  "smoke_only": false
+}

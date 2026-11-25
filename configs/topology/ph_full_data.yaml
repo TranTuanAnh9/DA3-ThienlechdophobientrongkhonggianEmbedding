@@ -1,0 +1,33 @@
+# Full-data PH training from scratch. Run one architecture per Kaggle session.
+available_models: [gru4rec, narm, sasrec]
+default_models: [gru4rec]
+methods: [baseline, cosine, ph_h0_h1]
+seeds: [2024, 2025]
+training:
+  epochs: 30
+  learning_rate: 0.001
+  train_batch_size: 512
+  eval_batch_size: 1024
+  weight_decay: 0.0
+  grad_clip_norm: 5.0
+  use_amp: false
+  log_every_batches: 100
+early_stopping:
+  monitor: mrr@20
+  patience: 5
+  min_delta: 0.0001
+topology_params:
+  neighbors: 6
+  max_clouds: 4
+  h1_weight: 1.0
+  lambda_topo: 0.15
+  lambda_anisotropy: 0.0
+  tail_threshold: 20
+  cosine_tau: 0.45
+  regularization_interval: 1
+  save_initial_embeddings: true
+geometry_export:
+  cloud_size: 12
+  rare_anchors: 3
+  medium_anchors: 1
+  popular_anchors: 1
